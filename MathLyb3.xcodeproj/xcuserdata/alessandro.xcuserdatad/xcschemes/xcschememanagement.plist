@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MathLabyrinth.xcscheme</key>
+		<key>MathLyb3.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>D2B8CB701C7278A2009FB6C0</key>
+		<key>D2B671021C72B2C900538B6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2B8CB811C7278A2009FB6C0</key>
+		<key>D2B671111C72B2C900538B6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

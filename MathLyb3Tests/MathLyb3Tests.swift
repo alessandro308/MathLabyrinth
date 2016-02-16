@@ -1,15 +1,15 @@
 //
-//  MathLabyrinthTests.swift
-//  MathLabyrinthTests
+//  MathLyb3Tests.swift
+//  MathLyb3Tests
 //
-//  Created by Alessandro Pagiaro on 15/02/16.
+//  Created by Alessandro Pagiaro on 16/02/16.
 //  Copyright © 2016 Alessandro Pagiaro. All rights reserved.
 //
 
 import XCTest
-@testable import MathLabyrinth
+@testable import MathLyb3
 
-class MathLabyrinthTests: XCTestCase {
+class MathLyb3Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()

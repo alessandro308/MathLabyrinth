@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MathLabyrinth
+//  MathLyb3
 //
-//  Created by Alessandro Pagiaro on 15/02/16.
+//  Created by Alessandro Pagiaro on 16/02/16.
 //  Copyright © 2016 Alessandro Pagiaro. All rights reserved.
 //
 
@@ -11,10 +11,12 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var window: NSWindow!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        window.contentViewController = MainViewController()
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -22,5 +24,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 
+    @IBAction func LivelliBtn(sender: AnyObject) {
+        
+        window.contentViewController?.presentViewControllerAsSheet(LevelScrollController())
+        Swift.print("abc")
+    }
 }
 

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2B8CB701C7278A2009FB6C0"
-               BuildableName = "MathLabyrinth.app"
-               BlueprintName = "MathLabyrinth"
-               ReferencedContainer = "container:MathLabyrinth.xcodeproj">
+               BlueprintIdentifier = "D2B671021C72B2C900538B6A"
+               BuildableName = "MathLyb3.app"
+               BlueprintName = "MathLyb3"
+               ReferencedContainer = "container:MathLyb3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2B8CB811C7278A2009FB6C0"
-               BuildableName = "MathLabyrinthTests.xctest"
-               BlueprintName = "MathLabyrinthTests"
-               ReferencedContainer = "container:MathLabyrinth.xcodeproj">
+               BlueprintIdentifier = "D2B671111C72B2C900538B6A"
+               BuildableName = "MathLyb3Tests.xctest"
+               BlueprintName = "MathLyb3Tests"
+               ReferencedContainer = "container:MathLyb3.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B8CB701C7278A2009FB6C0"
-            BuildableName = "MathLabyrinth.app"
-            BlueprintName = "MathLabyrinth"
-            ReferencedContainer = "container:MathLabyrinth.xcodeproj">
+            BlueprintIdentifier = "D2B671021C72B2C900538B6A"
+            BuildableName = "MathLyb3.app"
+            BlueprintName = "MathLyb3"
+            ReferencedContainer = "container:MathLyb3.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +65,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B8CB701C7278A2009FB6C0"
-            BuildableName = "MathLabyrinth.app"
-            BlueprintName = "MathLabyrinth"
-            ReferencedContainer = "container:MathLabyrinth.xcodeproj">
+            BlueprintIdentifier = "D2B671021C72B2C900538B6A"
+            BuildableName = "MathLyb3.app"
+            BlueprintName = "MathLyb3"
+            ReferencedContainer = "container:MathLyb3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,10 +84,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B8CB701C7278A2009FB6C0"
-            BuildableName = "MathLabyrinth.app"
-            BlueprintName = "MathLabyrinth"
-            ReferencedContainer = "container:MathLabyrinth.xcodeproj">
+            BlueprintIdentifier = "D2B671021C72B2C900538B6A"
+            BuildableName = "MathLyb3.app"
+            BlueprintName = "MathLyb3"
+            ReferencedContainer = "container:MathLyb3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
