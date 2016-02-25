@@ -13,21 +13,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
-
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        window.contentViewController = MainViewController()
-        
+        let main = MainViewController()
+        window.contentViewController = main
+        window.acceptsMouseMovedEvents = true
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
-
-
-    @IBAction func LivelliBtn(sender: AnyObject) {
-        
-        window.contentViewController?.presentViewControllerAsSheet(LevelScrollController())
-        Swift.print("abc")
-    }
+    
 }
 

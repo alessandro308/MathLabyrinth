@@ -7,26 +7,69 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="MathLyb3" customModuleProvider="target">
             <connections>
+                <outlet property="background" destination="FTr-2a-qWY" id="kJj-Jd-5I8"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="513" height="335"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDc-S4-s5q">
-                    <rect key="frame" x="200" y="13" width="81" height="32"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Efr-uW-uwe">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="FTr-2a-qWY" customClass="RandomNumberBackground" customModule="MathLyb3" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="513" height="335"/>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
+                    <rect key="frame" x="137" y="72" width="239" height="191"/>
+                </customView>
+                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
+                    <rect key="frame" x="219" y="151" width="75" height="32"/>
+                    <buttonCell key="cell" type="push" title="Gioca" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qKC-pZ-PjU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="btnClicked:" target="-2" id="5e6-zc-4Lj"/>
+                        <action selector="btnLevelClicked:" target="-2" id="Ose-UH-nt7"/>
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="40U-DS-Mp9"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="137" id="4ib-lb-z7A"/>
+                <constraint firstAttribute="trailing" secondItem="4Rr-pp-uwS" secondAttribute="trailing" constant="137" id="76c-7D-clp"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="72" id="8Ya-xn-E0D"/>
+                <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="A8b-bt-gLM"/>
+                <constraint firstAttribute="bottom" secondItem="4Rr-pp-uwS" secondAttribute="bottom" constant="72" id="Ctd-Fg-5oX"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerY" secondItem="FTr-2a-qWY" secondAttribute="centerY" id="D1M-lA-gJc"/>
+                <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="EyM-tD-OE7"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="137" id="Iga-Ua-8km"/>
+                <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OPo-Yz-C8c"/>
+                <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WwR-sY-bOm"/>
+                <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="boB-sf-DOW"/>
+                <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="fTk-V5-Z5c"/>
+                <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="j1l-mg-Ydq"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="FTr-2a-qWY" secondAttribute="centerX" id="kEM-ij-bbw"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="XBe-Oa-nS2" secondAttribute="centerX" id="rKM-Zd-cay"/>
+                <constraint firstItem="4Rr-pp-uwS" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="72" id="wqH-z5-OVF"/>
+            </constraints>
+            <point key="canvasLocation" x="321.5" y="421.5"/>
+        </customView>
+        <button verticalHuggingPriority="750" id="qlH-mU-j3j">
+            <rect key="frame" x="0.0" y="0.0" width="75" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="push" title="Livelli" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hLL-1C-Bpp">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+            <connections>
+                <action selector="btnLevelClicked:" target="-2" id="AGD-sx-tqU"/>
+            </connections>
+            <point key="canvasLocation" x="323.5" y="111.5"/>
+        </button>
+        <customView id="zg4-Gj-qB3">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
     </objects>
 </document>

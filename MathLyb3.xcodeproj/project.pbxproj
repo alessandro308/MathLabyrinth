@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218B6E41C7E859A00569E1A /* blackBackground.swift */; };
+		D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22044051C7BA3A100701252 /* RandomNumberBackground.swift */; };
+		D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235E2B91C7390D600CD11C9 /* LevelButton.swift */; };
 		D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671061C72B2C900538B6A /* AppDelegate.swift */; };
 		D2B671091C72B2C900538B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B671081C72B2C900538B6A /* Assets.xcassets */; };
 		D2B6710C1C72B2C900538B6A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B6710A1C72B2C900538B6A /* MainMenu.xib */; };
 		D2B671171C72B2C900538B6A /* MathLyb3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671161C72B2C900538B6A /* MathLyb3Tests.swift */; };
 		D2B671231C72B2F500538B6A /* LevelScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671211C72B2F500538B6A /* LevelScrollController.swift */; };
-		D2B671241C72B2F500538B6A /* LevelScrollController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B671221C72B2F500538B6A /* LevelScrollController.xib */; };
 		D2B671271C72B6D700538B6A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671251C72B6D700538B6A /* MainViewController.swift */; };
 		D2B671281C72B6D700538B6A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B671261C72B6D700538B6A /* MainViewController.xib */; };
+		D2FCE29B1C7C584100C19C7B /* globalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FCE29A1C7C584100C19C7B /* globalVar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D218B6E41C7E859A00569E1A /* blackBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackBackground.swift; sourceTree = "<group>"; };
+		D22044051C7BA3A100701252 /* RandomNumberBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberBackground.swift; sourceTree = "<group>"; };
+		D235E2B91C7390D600CD11C9 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		D2B671031C72B2C900538B6A /* MathLyb3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathLyb3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B671061C72B2C900538B6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B671081C72B2C900538B6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,9 +43,9 @@
 		D2B671161C72B2C900538B6A /* MathLyb3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathLyb3Tests.swift; sourceTree = "<group>"; };
 		D2B671181C72B2C900538B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B671211C72B2F500538B6A /* LevelScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelScrollController.swift; sourceTree = "<group>"; };
-		D2B671221C72B2F500538B6A /* LevelScrollController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelScrollController.xib; sourceTree = "<group>"; };
 		D2B671251C72B6D700538B6A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D2B671261C72B6D700538B6A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		D2FCE29A1C7C584100C19C7B /* globalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globalVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D26CDB8A1C77872C008AF56C /* SelectLevelController */ = {
+			isa = PBXGroup;
+			children = (
+				D235E2B91C7390D600CD11C9 /* LevelButton.swift */,
+				D2B671211C72B2F500538B6A /* LevelScrollController.swift */,
+			);
+			name = SelectLevelController;
+			sourceTree = "<group>";
+		};
 		D2B670FA1C72B2C900538B6A = {
 			isa = PBXGroup;
 			children = (
@@ -84,10 +99,12 @@
 				D2B671061C72B2C900538B6A /* AppDelegate.swift */,
 				D2B671081C72B2C900538B6A /* Assets.xcassets */,
 				D2B6710A1C72B2C900538B6A /* MainMenu.xib */,
+				D22044051C7BA3A100701252 /* RandomNumberBackground.swift */,
+				D2FCE29A1C7C584100C19C7B /* globalVar.swift */,
 				D2B671251C72B6D700538B6A /* MainViewController.swift */,
 				D2B671261C72B6D700538B6A /* MainViewController.xib */,
-				D2B671211C72B2F500538B6A /* LevelScrollController.swift */,
-				D2B671221C72B2F500538B6A /* LevelScrollController.xib */,
+				D218B6E41C7E859A00569E1A /* blackBackground.swift */,
+				D26CDB8A1C77872C008AF56C /* SelectLevelController */,
 				D2B6710D1C72B2C900538B6A /* Info.plist */,
 			);
 			path = MathLyb3;
@@ -183,7 +200,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B671241C72B2F500538B6A /* LevelScrollController.xib in Resources */,
 				D2B671091C72B2C900538B6A /* Assets.xcassets in Resources */,
 				D2B6710C1C72B2C900538B6A /* MainMenu.xib in Resources */,
 				D2B671281C72B6D700538B6A /* MainViewController.xib in Resources */,
@@ -204,9 +220,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */,
 				D2B671271C72B6D700538B6A /* MainViewController.swift in Sources */,
 				D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */,
+				D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */,
 				D2B671231C72B2F500538B6A /* LevelScrollController.swift in Sources */,
+				D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */,
+				D2FCE29B1C7C584100C19C7B /* globalVar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +409,7 @@
 				D2B6711D1C72B2C900538B6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2B6711E1C72B2C900538B6A /* Build configuration list for PBXNativeTarget "MathLyb3Tests" */ = {
 			isa = XCConfigurationList;
@@ -397,6 +418,7 @@
 				D2B671201C72B2C900538B6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

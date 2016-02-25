@@ -9,13 +9,26 @@
 import Cocoa
 
 class MainViewController: NSViewController {
-
+    
+    override var acceptsFirstResponder: Bool { get {return true}}
+    
+    @IBOutlet var background: RandomNumberBackground!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
-    @IBAction func btnClicked(sender: AnyObject) {
-        self.presentViewControllerAsSheet(LevelScrollController())
+    override func awakeFromNib() {
+        NSTimer.scheduledTimerWithTimeInterval(0.04, target: background, selector: "updateNumbers", userInfo: nil, repeats: true)
     }
+
+    @IBAction func btnLevelClicked(sender: AnyObject) {
+        let f = self.view.frame
+        
+        self.view.addSubview(LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
+            y: f.size.height / 5 ,
+            width: f.size.width*4 / 6  ,
+            height: f.size.height*4 / 5 )))
+    }
+
+
 }
