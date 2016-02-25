@@ -8,20 +8,41 @@
 
 import Cocoa
 
-class closeView: NSView{
+class closeBtn: NSView{
+        override func drawRect(dirtyRect: NSRect) {
+            super.drawRect(dirtyRect)
+            let pt = NSBezierPath()
+            pt.moveToPoint(NSMakePoint(2, 2))
+            pt.lineToPoint(NSMakePoint(self.frame.width / 2, 15))
+            pt.lineToPoint(NSMakePoint(self.frame.width-2, 2))
+            pt.lineCapStyle = NSLineCapStyle.RoundLineCapStyle
+            pt.lineWidth = 4
+            NSColor.whiteColor().setStroke()
+            pt.stroke()
+        }
     
-    override var acceptsFirstResponder: Bool { get { return false } }
-    
-    override func drawRect(dirtyRect: NSRect) {
-        let pt = NSBezierPath()
-        pt.moveToPoint(NSMakePoint(2, 2))
-        pt.lineToPoint(NSMakePoint(12, 18))
-        pt.lineToPoint(NSMakePoint(self.frame.width-2, 2))
-        pt.lineCapStyle = NSLineCapStyle.RoundLineCapStyle
-        pt.lineWidth = 4
-        NSColor.whiteColor().setStroke()
-        pt.stroke()
+    override func mouseDown(theEvent: NSEvent) {
+        let cont = self.superview?.superview as! LevelScrollController
+        cont.dismissView()
     }
+}
+
+class MyScrollView: NSScrollView{
+    
+//    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
+//        return true
+//    }
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        //super.contentView.copiesOnScroll = true
+        self.addSubview(closeBtn(frame: NSRect(x: self.frame.width - 30, y: self.frame.height-25, width: 26, height: 18)))
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
+    }
+
     
 }
 
@@ -30,9 +51,9 @@ class LevelScrollController: NSView {
     var scrollView: NSScrollView!
     
     override var acceptsFirstResponder: Bool {get {return true} }
-    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
-        return true
-    }
+//    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
+//        return true
+//    }
     //override func becomeFirstResponder() -> Bool { return true }
     
     var timer: NSTimer = NSTimer()
@@ -57,13 +78,14 @@ class LevelScrollController: NSView {
                                                 height: 50),
                                  name: "Primo Livello",
                                  number: 1)
+            bt.becomeFirstResponder()
             scrolledView.addSubview(bt)
         }
         
-        scrolledView.resignFirstResponder()
+
      
-        scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: self.finalFrame.size.width, height: self.finalFrame.height))
-        scrollView.resignFirstResponder()
+        scrollView = MyScrollView(frame: NSRect(x: 0, y: 0, width: self.finalFrame.size.width, height: self.finalFrame.height))
+
         scrollView.drawsBackground = false
         
         scrollView.documentView = scrolledView
@@ -71,9 +93,9 @@ class LevelScrollController: NSView {
         
         self.addSubview(scrollView)
         
-        //Si ruba lo scroll del mouse
-        let close = closeView(frame: NSRect(x: f.width - 24, y: 0, width: 24, height: 18))
-        self.addSubview(close)
+//        //Si ruba lo scroll del mouse
+//        let close = closeView(frame: NSRect(x: f.width - 24, y: 0, width: 24, height: 18))
+//        self.addSubview(close)
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "openFrameAnimation", userInfo: nil, repeats: true)
 
@@ -95,6 +117,7 @@ class LevelScrollController: NSView {
                             height: self.frame.height - 12)
         if(self.frame.height <= 0){
             timer.invalidate()
+            self.removeFromSuperview()
         }
     }
     
@@ -118,13 +141,14 @@ class LevelScrollController: NSView {
         
     }
     
-    override func mouseDown(theEvent: NSEvent) {
-        
+    func dismissView(){
+        NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
+        self.superview?.becomeFirstResponder()
     }
     
     override func keyDown(theEvent: NSEvent) {
         if theEvent.keyCode == 0x35{
-            NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
+            dismissView()
         }
     }
 }

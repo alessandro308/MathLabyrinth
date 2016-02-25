@@ -11,7 +11,6 @@ import Cocoa
 
 var selectedLevel = -1;
 
-
 func nc() -> CGFloat{
     return CGFloat(Int.random(0...100))/100
     //print(n)

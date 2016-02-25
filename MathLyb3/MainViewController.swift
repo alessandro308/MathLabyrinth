@@ -10,7 +10,8 @@ import Cocoa
 
 class MainViewController: NSViewController {
     
-    override var acceptsFirstResponder: Bool { get {return true}}
+    override var acceptsFirstResponder: Bool { get {return true} }
+    
     
     @IBOutlet var background: RandomNumberBackground!
     override func viewDidLoad() {
@@ -23,11 +24,12 @@ class MainViewController: NSViewController {
 
     @IBAction func btnLevelClicked(sender: AnyObject) {
         let f = self.view.frame
-        
-        self.view.addSubview(LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
+        let scr = LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
             y: f.size.height / 5 ,
             width: f.size.width*4 / 6  ,
-            height: f.size.height*4 / 5 )))
+            height: f.size.height*4 / 5 ))
+        scr.becomeFirstResponder()
+        self.view.addSubview(scr)
     }
 
 

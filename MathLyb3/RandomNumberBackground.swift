@@ -63,8 +63,11 @@ class RandomNumberBackground: NSView {
             now: self.attrs[NSForegroundColorAttributeName] as! NSColor)
     }
     
+    override func mouseUp(theEvent: NSEvent) {
+        self.window?.viewsNeedDisplay = true
+    }
+    
     override func keyDown(theEvent: NSEvent) {
-        Swift.print("keyDown from RandomBackgroundNumber")
         if(theEvent.keyCode == 53){
             NSApplication.sharedApplication().terminate(self)
         }
