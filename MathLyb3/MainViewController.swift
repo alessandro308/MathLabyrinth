@@ -12,7 +12,6 @@ class MainViewController: NSViewController {
     
     override var acceptsFirstResponder: Bool { get {return true} }
     
-    
     @IBOutlet var background: RandomNumberBackground!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,5 +31,11 @@ class MainViewController: NSViewController {
         self.view.addSubview(scr)
     }
 
+    @IBAction func newLevel(sender: AnyObject) {
+        let f = self.view.frame
+        let composeLevelView = CreateLevelController(frame: NSRect(x: 0, y: 0, width: f.width, height: f.height))
+        composeLevelView.becomeFirstResponder()
+        self.view.addSubview(composeLevelView)
+    }
 
 }

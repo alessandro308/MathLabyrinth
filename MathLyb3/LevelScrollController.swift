@@ -46,18 +46,14 @@ class MyScrollView: NSScrollView{
     
 }
 
-class LevelScrollController: NSView {
+class LevelScrollController: MySheetView {
 
     var scrollView: NSScrollView!
-    
-    override var acceptsFirstResponder: Bool {get {return true} }
+
 //    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
 //        return true
 //    }
     //override func becomeFirstResponder() -> Bool { return true }
-    
-    var timer: NSTimer = NSTimer()
-    var finalFrame:NSRect = NSRect.zero;
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -76,7 +72,7 @@ class LevelScrollController: NSView {
                                                 y: scrolledFrame.size.height -  CGFloat(i*50),
                                                 width: scrolledView.frame.width,
                                                 height: 50),
-                                 name: "Primo Livello",
+                                 name: "Un fiume in piena",
                                  number: 1)
             bt.becomeFirstResponder()
             scrolledView.addSubview(bt)
@@ -100,38 +96,17 @@ class LevelScrollController: NSView {
         timer = NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "openFrameAnimation", userInfo: nil, repeats: true)
 
     }
-    
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow()
-        self.window!.makeFirstResponder(self) //Riga maledetta. 4 ore per trovare questa cosa!
-    }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    func closeFrameAnimation(){
-        self.frame = NSRect(x: self.frame.origin.x,
-                            y: self.frame.origin.y + 12,
-                            width: self.frame.width,
-                            height: self.frame.height - 12)
-        if(self.frame.height <= 0){
-            timer.invalidate()
-            self.removeFromSuperview()
-        }
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        //self.window!.makeFirstResponder(self) //Riga maledetta. 4 ore per trovare questa cosa!
     }
-    
-    func openFrameAnimation(){
-        self.frame = NSRect(x: self.frame.origin.x,
-                            y: self.frame.origin.y-12,
-                            width: self.frame.width,
-                            height: self.frame.height + 12)
-        if(self.frame.height >= self.finalFrame.height){
-            self.frame = self.finalFrame
-            timer.invalidate()
-        }
-        self.needsDisplay = true
-    }
+
+
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
@@ -141,10 +116,6 @@ class LevelScrollController: NSView {
         
     }
     
-    func dismissView(){
-        NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
-        self.superview?.becomeFirstResponder()
-    }
     
     override func keyDown(theEvent: NSEvent) {
         if theEvent.keyCode == 0x35{

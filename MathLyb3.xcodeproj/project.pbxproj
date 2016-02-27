@@ -10,6 +10,11 @@
 		D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218B6E41C7E859A00569E1A /* blackBackground.swift */; };
 		D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22044051C7BA3A100701252 /* RandomNumberBackground.swift */; };
 		D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235E2B91C7390D600CD11C9 /* LevelButton.swift */; };
+		D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E351C82489C009E3663 /* CreateLevelController.swift */; };
+		D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E3A1C824B6E009E3663 /* SheetView.swift */; };
+		D2701E3E1C824EB2009E3663 /* PlayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E3C1C824EB2009E3663 /* PlayGame.swift */; };
+		D2701E3F1C824EB2009E3663 /* PlayGame.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2701E3D1C824EB2009E3663 /* PlayGame.xib */; };
+		D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B49F761C7F8823009F5ACE /* GameView.swift */; };
 		D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671061C72B2C900538B6A /* AppDelegate.swift */; };
 		D2B671091C72B2C900538B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B671081C72B2C900538B6A /* Assets.xcassets */; };
 		D2B6710C1C72B2C900538B6A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B6710A1C72B2C900538B6A /* MainMenu.xib */; };
@@ -17,6 +22,8 @@
 		D2B671231C72B2F500538B6A /* LevelScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671211C72B2F500538B6A /* LevelScrollController.swift */; };
 		D2B671271C72B6D700538B6A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671251C72B6D700538B6A /* MainViewController.swift */; };
 		D2B671281C72B6D700538B6A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B671261C72B6D700538B6A /* MainViewController.xib */; };
+		D2CB12D31C806E0300214111 /* MenuBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CB12D21C806E0300214111 /* MenuBtn.swift */; };
+		D2CB12D41C808D0400214111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B671081C72B2C900538B6A /* Assets.xcassets */; };
 		D2FCE29B1C7C584100C19C7B /* globalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FCE29A1C7C584100C19C7B /* globalVar.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +41,11 @@
 		D218B6E41C7E859A00569E1A /* blackBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackBackground.swift; sourceTree = "<group>"; };
 		D22044051C7BA3A100701252 /* RandomNumberBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberBackground.swift; sourceTree = "<group>"; };
 		D235E2B91C7390D600CD11C9 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
+		D2701E351C82489C009E3663 /* CreateLevelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLevelController.swift; sourceTree = "<group>"; };
+		D2701E3A1C824B6E009E3663 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		D2701E3C1C824EB2009E3663 /* PlayGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGame.swift; sourceTree = "<group>"; };
+		D2701E3D1C824EB2009E3663 /* PlayGame.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayGame.xib; sourceTree = "<group>"; };
+		D2B49F761C7F8823009F5ACE /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D2B671031C72B2C900538B6A /* MathLyb3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathLyb3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B671061C72B2C900538B6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B671081C72B2C900538B6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +57,7 @@
 		D2B671211C72B2F500538B6A /* LevelScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelScrollController.swift; sourceTree = "<group>"; };
 		D2B671251C72B6D700538B6A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D2B671261C72B6D700538B6A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		D2CB12D21C806E0300214111 /* MenuBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBtn.swift; sourceTree = "<group>"; };
 		D2FCE29A1C7C584100C19C7B /* globalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globalVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +88,24 @@
 			name = SelectLevelController;
 			sourceTree = "<group>";
 		};
+		D2701E391C8248A6009E3663 /* CreateLevelController */ = {
+			isa = PBXGroup;
+			children = (
+				D2701E351C82489C009E3663 /* CreateLevelController.swift */,
+			);
+			name = CreateLevelController;
+			sourceTree = "<group>";
+		};
+		D2B49F751C7F87D1009F5ACE /* PlayGame */ = {
+			isa = PBXGroup;
+			children = (
+				D2701E3C1C824EB2009E3663 /* PlayGame.swift */,
+				D2701E3D1C824EB2009E3663 /* PlayGame.xib */,
+				D2B49F761C7F8823009F5ACE /* GameView.swift */,
+			);
+			name = PlayGame;
+			sourceTree = "<group>";
+		};
 		D2B670FA1C72B2C900538B6A = {
 			isa = PBXGroup;
 			children = (
@@ -100,11 +131,15 @@
 				D2B671081C72B2C900538B6A /* Assets.xcassets */,
 				D2B6710A1C72B2C900538B6A /* MainMenu.xib */,
 				D22044051C7BA3A100701252 /* RandomNumberBackground.swift */,
+				D2CB12D21C806E0300214111 /* MenuBtn.swift */,
 				D2FCE29A1C7C584100C19C7B /* globalVar.swift */,
 				D2B671251C72B6D700538B6A /* MainViewController.swift */,
+				D2701E3A1C824B6E009E3663 /* SheetView.swift */,
 				D2B671261C72B6D700538B6A /* MainViewController.xib */,
+				D2701E391C8248A6009E3663 /* CreateLevelController */,
 				D218B6E41C7E859A00569E1A /* blackBackground.swift */,
 				D26CDB8A1C77872C008AF56C /* SelectLevelController */,
+				D2B49F751C7F87D1009F5ACE /* PlayGame */,
 				D2B6710D1C72B2C900538B6A /* Info.plist */,
 			);
 			path = MathLyb3;
@@ -201,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B671091C72B2C900538B6A /* Assets.xcassets in Resources */,
+				D2701E3F1C824EB2009E3663 /* PlayGame.xib in Resources */,
 				D2B6710C1C72B2C900538B6A /* MainMenu.xib in Resources */,
 				D2B671281C72B6D700538B6A /* MainViewController.xib in Resources */,
 			);
@@ -210,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2CB12D41C808D0400214111 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,11 +258,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */,
+				D2701E3E1C824EB2009E3663 /* PlayGame.swift in Sources */,
 				D2B671271C72B6D700538B6A /* MainViewController.swift in Sources */,
 				D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */,
+				D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */,
+				D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */,
 				D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */,
+				D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */,
 				D2B671231C72B2F500538B6A /* LevelScrollController.swift in Sources */,
 				D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */,
+				D2CB12D31C806E0300214111 /* MenuBtn.swift in Sources */,
 				D2FCE29B1C7C584100C19C7B /* globalVar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,14 +7,25 @@
 //
 
 import Cocoa
+let scrollVel = CGFloat(1)
 
 class ScrolledString: NSView{
     var text: NSString;
     override var acceptsFirstResponder:Bool{ get {return true} }
+    var timer = NSTimer();
+    var goLeft = true
+    
+    var offset:CGFloat = 0
+    let attrs : [String: AnyObject] = [
+        NSFontAttributeName: NSFont(name: "Helvetica", size: 40.0)!,
+        NSForegroundColorAttributeName: NSColor.whiteColor()
+    ]
     
     init(frame frameRect: NSRect, string:NSString){
         self.text = NSString(string:string )
         super.init(frame: frameRect)
+        let trk = NSTrackingArea(rect: NSRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), options: [NSTrackingAreaOptions.ActiveInKeyWindow,NSTrackingAreaOptions.MouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trk)
     }
 
     required init?(coder: NSCoder) {
@@ -23,27 +34,50 @@ class ScrolledString: NSView{
     }
     
     override func drawRect(dirtyRect: NSRect) {
-        let font = NSFont(name: "Helvetica", size: 40.0)
-        let attrs : [String: AnyObject] = [
-            NSFontAttributeName: font!,
-            NSForegroundColorAttributeName: NSColor.whiteColor()
-        ]
-        text.drawInRect(NSRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), withAttributes: attrs)
+        text.drawInRect(NSRect(x: offset, y: 0, width: self.text.sizeWithAttributes(attrs).width, height: self.frame.height), withAttributes: attrs)
         //NSBezierPath(rect: NSRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)).fill()
     }
     
-    override func mouseMoved(theEvent: NSEvent) {
-        Swift.print("MouseMOVED on ScrolledString")
+    override func mouseEntered(theEvent: NSEvent) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.04, target: self, selector: "scrollText", userInfo: nil, repeats: true)
+        
+    }
+    
+    func scrollText(){
+        if goLeft{
+            if(self.text.sizeWithAttributes(attrs).width + self.offset > self.frame.width){
+                self.offset -= scrollVel
+            }
+            else{
+                goLeft = !goLeft
+            }
+        }
+        else{
+            if(offset < 0){
+                self.offset += scrollVel
+            }
+            else{
+                goLeft = !goLeft
+            }
+        }
+        self.needsDisplay = true
+    }
+    
+    override func mouseExited(theEvent: NSEvent) {
+        //Swift.print("mouseExit")
+        self.offset = 0
+        self.needsDisplay = true
+        timer.invalidate()
     }
 
 }
 
-class LevelButton: NSButton {
+class LevelButton: NSView {
     override var acceptsFirstResponder: Bool {get {return false} }
     override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return true
     }
-
+    
     var name:NSString = "";
     var number: Int = 0
     var textColor = NSColor.whiteColor()
@@ -57,7 +91,7 @@ class LevelButton: NSButton {
         self.number = number
         self.name = name
 
-        let view = ScrolledString(frame: NSRect(x: myRect.width*4/9, y: 0, width: myRect.width*4/9 , height: myRect.height), string: self.name)
+        let view = ScrolledString(frame: NSRect(x: myRect.width*5/18, y: 0, width: myRect.width*12/18 , height: myRect.height), string: self.name)
         view.text = self.name
         view.needsDisplay = true
         self.addSubview(view)
@@ -67,9 +101,8 @@ class LevelButton: NSButton {
         myRect = NSRect.zero
         super.init(coder: coder)
     }
-    
+
     override func drawRect(dirtyRect: NSRect) {
-        //Draw Number
         let font = NSFont(name: "Helvetica", size: 40.0)
         bgColor.setFill() //Azzurrino
         NSColor.blackColor().setStroke()
@@ -93,15 +126,16 @@ class LevelButton: NSButton {
     }
     
     override func mouseDown(theEvent: NSEvent) {
-        super.mouseDown(theEvent)
         self.bgColor = NSColor(hex: 0x4A7AA1)
-        self.textColor = NSColor.darkGrayColor()
+        //self.textColor = NSColor.darkGrayColor()
         self.needsDisplay = true
     }
     
     override func mouseUp(theEvent: NSEvent) {
-        Swift.print("MouseUP on LevelButton")
         self.textColor = NSColor.whiteColor()
         self.bgColor = NSColor(hex: 0x6AAFE6, alpha: 0.95)
+        selectedLevel = self.number;
+        let sv = self.superview?.superview?.superview?.superview as! LevelScrollController
+        sv.dismissView()
     }
 }

@@ -22,15 +22,27 @@
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
                     <rect key="frame" x="137" y="72" width="239" height="191"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
+                            <rect key="frame" x="63" y="144" width="114" height="32"/>
+                            <buttonCell key="cell" type="push" title="Gioca" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qKC-pZ-PjU">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="btnLevelClicked:" target="-2" id="Ose-UH-nt7"/>
+                            </connections>
+                        </button>
+                    </subviews>
                 </customView>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
-                    <rect key="frame" x="219" y="151" width="75" height="32"/>
-                    <buttonCell key="cell" type="push" title="Gioca" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qKC-pZ-PjU">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32D-mj-xOU">
+                    <rect key="frame" x="201" y="176" width="111" height="32"/>
+                    <buttonCell key="cell" type="push" title="Crea Livello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ucx-xe-0FP">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="btnLevelClicked:" target="-2" id="Ose-UH-nt7"/>
+                        <action selector="newLevel:" target="-2" id="mc6-Gg-vHf"/>
                     </connections>
                 </button>
             </subviews>
@@ -50,7 +62,6 @@
                 <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="fTk-V5-Z5c"/>
                 <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="j1l-mg-Ydq"/>
                 <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="FTr-2a-qWY" secondAttribute="centerX" id="kEM-ij-bbw"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="XBe-Oa-nS2" secondAttribute="centerX" id="rKM-Zd-cay"/>
                 <constraint firstItem="4Rr-pp-uwS" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="72" id="wqH-z5-OVF"/>
             </constraints>
             <point key="canvasLocation" x="321.5" y="421.5"/>

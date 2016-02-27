@@ -69,6 +69,7 @@ class RandomNumberBackground: NSView {
     
     override func keyDown(theEvent: NSEvent) {
         if(theEvent.keyCode == 53){
+            Swift.print(selectedLevel)
             NSApplication.sharedApplication().terminate(self)
         }
     }

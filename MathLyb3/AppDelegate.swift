@@ -14,9 +14,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        //let main = PlayGame()
         let main = MainViewController()
         window.contentViewController = main
         window.acceptsMouseMovedEvents = true
+        window.styleMask = NSBorderlessWindowMask
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
