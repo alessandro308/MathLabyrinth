@@ -14,6 +14,7 @@
 		D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E3A1C824B6E009E3663 /* SheetView.swift */; };
 		D2701E3E1C824EB2009E3663 /* PlayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E3C1C824EB2009E3663 /* PlayGame.swift */; };
 		D2701E3F1C824EB2009E3663 /* PlayGame.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2701E3D1C824EB2009E3663 /* PlayGame.xib */; };
+		D2701E411C82507E009E3663 /* MyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E401C82507E009E3663 /* MyWindow.swift */; };
 		D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B49F761C7F8823009F5ACE /* GameView.swift */; };
 		D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B671061C72B2C900538B6A /* AppDelegate.swift */; };
 		D2B671091C72B2C900538B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B671081C72B2C900538B6A /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		D2701E3A1C824B6E009E3663 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		D2701E3C1C824EB2009E3663 /* PlayGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGame.swift; sourceTree = "<group>"; };
 		D2701E3D1C824EB2009E3663 /* PlayGame.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayGame.xib; sourceTree = "<group>"; };
+		D2701E401C82507E009E3663 /* MyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWindow.swift; sourceTree = "<group>"; };
 		D2B49F761C7F8823009F5ACE /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D2B671031C72B2C900538B6A /* MathLyb3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathLyb3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B671061C72B2C900538B6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B671061C72B2C900538B6A /* AppDelegate.swift */,
+				D2701E401C82507E009E3663 /* MyWindow.swift */,
 				D2B671081C72B2C900538B6A /* Assets.xcassets */,
 				D2B6710A1C72B2C900538B6A /* MainMenu.xib */,
 				D22044051C7BA3A100701252 /* RandomNumberBackground.swift */,
@@ -263,6 +266,7 @@
 				D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */,
 				D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */,
 				D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */,
+				D2701E411C82507E009E3663 /* MyWindow.swift in Sources */,
 				D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */,
 				D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */,
 				D2B671231C72B2F500538B6A /* LevelScrollController.swift in Sources */,

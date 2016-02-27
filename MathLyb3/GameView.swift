@@ -10,7 +10,7 @@ import Cocoa
 
 class GameView: NSView {
     
-    override var acceptsFirstResponder: Bool { get { return true} }
+    override var acceptsFirstResponder: Bool { return true}
     override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return true
     }
@@ -23,10 +23,12 @@ class GameView: NSView {
     }
     
     override func keyDown(theEvent: NSEvent) {
+        Swift.print("KeyDown on View")
         if(theEvent.keyCode == 53){
             Swift.print(selectedLevel)
             NSApplication.sharedApplication().terminate(self)
         }
     }
+    
     
 }

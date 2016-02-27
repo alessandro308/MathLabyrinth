@@ -9,6 +9,7 @@
 import Cocoa
 
 class PlayGame: NSViewController {
+    
     @IBOutlet var mainView: GameView!
     
     override var acceptsFirstResponder : Bool {get {return true} }
@@ -18,4 +19,7 @@ class PlayGame: NSViewController {
         mainView.becomeFirstResponder()
     }
     
+    override func mouseDown(theEvent: NSEvent) {
+        Swift.print("MouseDown on NSViewController")
+    }
 }
