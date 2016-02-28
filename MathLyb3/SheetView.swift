@@ -56,16 +56,13 @@ class MySheetView: NSView {
     }
     
     func closeFrameAnimation(){
-        Swift.print("Close Animation", NSDate().timeIntervalSince1970)
         self.frame = NSRect(x: self.frame.origin.x,
             y: self.frame.origin.y + delta,
             width: self.frame.width,
             height: self.frame.height - delta)
-        Swift.print(self.frame.height)
         if(self.frame.height <= 12 ){
             timer?.invalidate()
             timer = nil
-            Swift.print("Mi rimuovo da superview subviews")
             self.removeFromSuperview()
         }
         if(selectedLevel != -1){
@@ -83,6 +80,7 @@ class MySheetView: NSView {
             timer?.invalidate()
             timer = nil
         }
+        onOpen()
         self.needsDisplay = true
     }
     
@@ -93,6 +91,10 @@ class MySheetView: NSView {
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
         //self.superview?.becomeFirstResponder()
+    }
+    
+    func onOpen(){
+        
     }
     
 }

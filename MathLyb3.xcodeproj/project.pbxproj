@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218B6E41C7E859A00569E1A /* blackBackground.swift */; };
+		D21E0DFE1C834BFC00AC0985 /* LWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E0DFD1C834BFC00AC0985 /* LWView.swift */; };
 		D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22044051C7BA3A100701252 /* RandomNumberBackground.swift */; };
 		D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235E2B91C7390D600CD11C9 /* LevelButton.swift */; };
 		D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E351C82489C009E3663 /* CreateLevelController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		D218B6E41C7E859A00569E1A /* blackBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackBackground.swift; sourceTree = "<group>"; };
+		D21E0DFD1C834BFC00AC0985 /* LWView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LWView.swift; sourceTree = "<group>"; };
 		D22044051C7BA3A100701252 /* RandomNumberBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberBackground.swift; sourceTree = "<group>"; };
 		D235E2B91C7390D600CD11C9 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		D2701E351C82489C009E3663 /* CreateLevelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLevelController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				D2701E351C82489C009E3663 /* CreateLevelController.swift */,
+				D21E0DFD1C834BFC00AC0985 /* LWView.swift */,
 			);
 			name = CreateLevelController;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				D2B671271C72B6D700538B6A /* MainViewController.swift in Sources */,
 				D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */,
 				D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */,
+				D21E0DFE1C834BFC00AC0985 /* LWView.swift in Sources */,
 				D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */,
 				D2701E411C82507E009E3663 /* MyWindow.swift in Sources */,
 				D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */,
