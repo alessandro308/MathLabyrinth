@@ -9,17 +9,17 @@
 import Cocoa
 
 class closeBtn: NSView{
-        override func drawRect(dirtyRect: NSRect) {
-            super.drawRect(dirtyRect)
-            let pt = NSBezierPath()
-            pt.moveToPoint(NSMakePoint(2, 2))
-            pt.lineToPoint(NSMakePoint(self.frame.width / 2, 15))
-            pt.lineToPoint(NSMakePoint(self.frame.width-2, 2))
-            pt.lineCapStyle = NSLineCapStyle.RoundLineCapStyle
-            pt.lineWidth = 4
-            NSColor.whiteColor().setStroke()
-            pt.stroke()
-        }
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+        let pt = NSBezierPath()
+        pt.moveToPoint(NSMakePoint(2, 2))
+        pt.lineToPoint(NSMakePoint(self.frame.width / 2, 15))
+        pt.lineToPoint(NSMakePoint(self.frame.width-2, 2))
+        pt.lineCapStyle = NSLineCapStyle.RoundLineCapStyle
+        pt.lineWidth = 4
+        NSColor.whiteColor().setStroke()
+        pt.stroke()
+    }
     
     override func mouseDown(theEvent: NSEvent) {
         let cont = self.superview?.superview as! LevelScrollController
@@ -29,9 +29,7 @@ class closeBtn: NSView{
 
 class MyScrollView: NSScrollView{
     
-//    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
-//        return true
-//    }
+    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool { return true }
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -46,14 +44,16 @@ class MyScrollView: NSScrollView{
     
 }
 
+
+// Classe di gestione dell'intera vista
 class LevelScrollController: MySheetView {
 
-    var scrollView: NSScrollView!
+    var scrollView: NSScrollView! = nil
 
-//    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
-//        return true
-//    }
-    //override func becomeFirstResponder() -> Bool { return true }
+    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
+        return true
+    }
+    override func becomeFirstResponder() -> Bool { return true }
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -74,12 +74,10 @@ class LevelScrollController: MySheetView {
                                                 height: 50),
                                  name: "Un fiume in piena",
                                  number: 1)
-            bt.becomeFirstResponder()
             scrolledView.addSubview(bt)
         }
         
 
-     
         scrollView = MyScrollView(frame: NSRect(x: 0, y: 0, width: self.finalFrame.size.width, height: self.finalFrame.height))
 
         scrollView.drawsBackground = false
@@ -90,11 +88,9 @@ class LevelScrollController: MySheetView {
         self.addSubview(scrollView)
         
 //        //Si ruba lo scroll del mouse
-//        let close = closeView(frame: NSRect(x: f.width - 24, y: 0, width: 24, height: 18))
+//        let close = closeBtn(frame: NSRect(x: f.width - 24, y: 0, width: 24, height: 18))
 //        self.addSubview(close)
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "openFrameAnimation", userInfo: nil, repeats: true)
-
     }
 
     required init?(coder: NSCoder) {
@@ -106,7 +102,6 @@ class LevelScrollController: MySheetView {
         //self.window!.makeFirstResponder(self) //Riga maledetta. 4 ore per trovare questa cosa!
     }
 
-
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
@@ -116,10 +111,10 @@ class LevelScrollController: MySheetView {
         
     }
     
-    
     override func keyDown(theEvent: NSEvent) {
         if theEvent.keyCode == 0x35{
             dismissView()
         }
     }
+
 }

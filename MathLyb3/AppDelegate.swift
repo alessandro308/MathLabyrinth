@@ -18,12 +18,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let main = MainViewController()
         window.contentViewController = main
         window.acceptsMouseMovedEvents = true
-        window.styleMask = NSBorderlessWindowMask
+        window.styleMask = NSBorderlessWindowMask | NSResizableWindowMask
+        window.movableByWindowBackground = true
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
+    
     
 }
 

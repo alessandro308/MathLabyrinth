@@ -135,7 +135,12 @@ class LevelButton: NSView {
         self.textColor = NSColor.whiteColor()
         self.bgColor = NSColor(hex: 0x6AAFE6, alpha: 0.95)
         selectedLevel = self.number;
+        
         let sv = self.superview?.superview?.superview?.superview as! LevelScrollController
         sv.dismissView()
+        
+        self.window?.styleMask = NSFullScreenWindowMask
+        self.window?.setFrame((NSScreen.mainScreen()?.frame)!, display: true, animate: true)
+        
     }
 }

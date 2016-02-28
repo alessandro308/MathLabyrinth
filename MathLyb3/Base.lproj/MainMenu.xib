@@ -672,6 +672,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="476" y="269" width="570" height="388"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="570" height="388"/>
             <view key="contentView" identifier="MainMenuView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="570" height="388"/>
                 <autoresizingMask key="autoresizingMask"/>

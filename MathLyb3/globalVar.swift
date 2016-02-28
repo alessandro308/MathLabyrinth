@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 var selectedLevel = -1;
+var levels = []
 
 func nc() -> CGFloat{
     return CGFloat(Int.random(0...100))/100

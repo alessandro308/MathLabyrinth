@@ -17,13 +17,13 @@ class GameView: NSView {
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
+        self.setFrameSize(NSSize(width: 500, height: 500))
         
-        NSBezierPath(rect: NSRect(x: 0, y: 0, width: 100, height: 100)).fill()
+        NSBezierPath(rect: NSRect(x: 0, y: 0, width: 500, height: 500)).fill()
         // Drawing code here.
     }
     
     override func keyDown(theEvent: NSEvent) {
-        Swift.print("KeyDown on View")
         if(theEvent.keyCode == 53){
             Swift.print(selectedLevel)
             NSApplication.sharedApplication().terminate(self)

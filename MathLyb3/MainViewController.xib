@@ -19,50 +19,78 @@
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="FTr-2a-qWY" customClass="RandomNumberBackground" customModule="MathLyb3" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="513" height="335"/>
-                </customView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
-                    <rect key="frame" x="137" y="72" width="239" height="191"/>
                     <subviews>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
-                            <rect key="frame" x="63" y="144" width="114" height="32"/>
-                            <buttonCell key="cell" type="push" title="Gioca" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qKC-pZ-PjU">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="btnLevelClicked:" target="-2" id="Ose-UH-nt7"/>
-                            </connections>
-                        </button>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
+                            <rect key="frame" x="137" y="72" width="239" height="191"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="32D-mj-xOU">
+                                    <rect key="frame" x="63" y="111" width="111" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="eEo-bU-oWn"/>
+                                        <constraint firstAttribute="width" constant="99" id="sVf-Xj-I5e"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="push" title="Crea Livello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ucx-xe-0FP">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="newLevel:" target="-2" id="mc6-Gg-vHf"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
+                                    <rect key="frame" x="61" y="144" width="114" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="qmQ-f5-GTC"/>
+                                        <constraint firstAttribute="width" constant="102" id="vuX-4Y-D95"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="push" title="Gioca" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qKC-pZ-PjU">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="btnLevelClicked:" target="-2" id="Ose-UH-nt7"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Ji-o3-5qI">
+                                    <rect key="frame" x="87" y="13" width="65" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Esci" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QKG-LD-fve">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="ExitBtn:" target="-2" id="0h5-2L-xtd"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="32D-mj-xOU" firstAttribute="leading" secondItem="XBe-Oa-nS2" secondAttribute="leading" id="24A-gL-G89"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="191" id="2bw-yI-DPf"/>
+                                <constraint firstItem="32D-mj-xOU" firstAttribute="top" secondItem="XBe-Oa-nS2" secondAttribute="bottom" constant="12" symbolic="YES" id="BA1-Cs-1JY"/>
+                                <constraint firstItem="32D-mj-xOU" firstAttribute="top" secondItem="4Rr-pp-uwS" secondAttribute="top" constant="52" id="FwF-cF-jMZ"/>
+                                <constraint firstItem="9Ji-o3-5qI" firstAttribute="centerX" secondItem="4Rr-pp-uwS" secondAttribute="centerX" id="Rr0-Zc-MTY"/>
+                                <constraint firstAttribute="height" constant="191" id="UwF-iC-5Lh"/>
+                                <constraint firstAttribute="width" constant="239" id="WqG-01-9dk"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="239" id="gCj-qM-ENU"/>
+                                <constraint firstItem="32D-mj-xOU" firstAttribute="leading" secondItem="4Rr-pp-uwS" secondAttribute="leading" constant="69" id="mHD-gp-cEE"/>
+                                <constraint firstAttribute="bottom" secondItem="9Ji-o3-5qI" secondAttribute="bottom" constant="20" symbolic="YES" id="tT2-k1-nv3"/>
+                            </constraints>
+                        </customView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="FTr-2a-qWY" secondAttribute="centerX" id="B0a-eY-tRa"/>
+                        <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerY" secondItem="FTr-2a-qWY" secondAttribute="centerY" id="ImC-Dx-HYP"/>
+                    </constraints>
                 </customView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32D-mj-xOU">
-                    <rect key="frame" x="201" y="176" width="111" height="32"/>
-                    <buttonCell key="cell" type="push" title="Crea Livello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ucx-xe-0FP">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="newLevel:" target="-2" id="mc6-Gg-vHf"/>
-                    </connections>
-                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="40U-DS-Mp9"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="137" id="4ib-lb-z7A"/>
-                <constraint firstAttribute="trailing" secondItem="4Rr-pp-uwS" secondAttribute="trailing" constant="137" id="76c-7D-clp"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="72" id="8Ya-xn-E0D"/>
                 <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="A8b-bt-gLM"/>
-                <constraint firstAttribute="bottom" secondItem="4Rr-pp-uwS" secondAttribute="bottom" constant="72" id="Ctd-Fg-5oX"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerY" secondItem="FTr-2a-qWY" secondAttribute="centerY" id="D1M-lA-gJc"/>
                 <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="EyM-tD-OE7"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="137" id="Iga-Ua-8km"/>
                 <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OPo-Yz-C8c"/>
                 <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WwR-sY-bOm"/>
                 <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="boB-sf-DOW"/>
                 <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="fTk-V5-Z5c"/>
                 <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="j1l-mg-Ydq"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="FTr-2a-qWY" secondAttribute="centerX" id="kEM-ij-bbw"/>
-                <constraint firstItem="4Rr-pp-uwS" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="72" id="wqH-z5-OVF"/>
             </constraints>
             <point key="canvasLocation" x="321.5" y="421.5"/>
         </customView>

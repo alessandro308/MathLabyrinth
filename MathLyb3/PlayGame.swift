@@ -20,6 +20,6 @@ class PlayGame: NSViewController {
     }
     
     override func mouseDown(theEvent: NSEvent) {
-        Swift.print("MouseDown on NSViewController")
+        
     }
 }

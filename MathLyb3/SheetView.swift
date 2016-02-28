@@ -11,8 +11,11 @@ import Cocoa
 class MySheetView: NSView {
     override var acceptsFirstResponder: Bool {get {return true} }
     
-    var timer: NSTimer = NSTimer()
+    var timer: NSTimer? = nil
     var finalFrame:NSRect = NSRect.zero;
+    var mouseEventMonitor : AnyObject! = nil
+    var clickOutOfBound: Bool = false
+    var delta = CGFloat(10)
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -21,7 +24,31 @@ class MySheetView: NSView {
         
         self.frame = NSRect(x: self.finalFrame.origin.x, y: frame.origin.y+frame.height, width: frame.width, height: 0)
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "openFrameAnimation", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "openFrameAnimation", userInfo: nil, repeats: true)
+        
+        self.mouseEventMonitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDownMask, handler: { (theEvent : NSEvent) -> NSEvent? in
+            if !self.frame.contains(theEvent.locationInWindow) && theEvent.clickCount != 2 {
+                self.clickOutOfBound = true
+            }
+            return theEvent
+        })
+        self.mouseEventMonitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDraggedMask,
+            handler: {(theEvent: NSEvent) -> NSEvent? in
+                self.clickOutOfBound = false
+                return theEvent
+            }
+        )
+        self.mouseEventMonitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.LeftMouseUpMask, handler: { (theEvent : NSEvent) -> NSEvent? in
+            if self.clickOutOfBound{
+                if(self.mouseEventMonitor != nil){
+                    NSEvent.removeMonitor(self.mouseEventMonitor)
+                    self.mouseEventMonitor = nil
+                }
+                self.dismissView()
+            }
+            return theEvent
+        })
+
     }
     
     required init?(coder: NSCoder) {
@@ -29,12 +56,16 @@ class MySheetView: NSView {
     }
     
     func closeFrameAnimation(){
+        Swift.print("Close Animation", NSDate().timeIntervalSince1970)
         self.frame = NSRect(x: self.frame.origin.x,
-            y: self.frame.origin.y + 12,
+            y: self.frame.origin.y + delta,
             width: self.frame.width,
-            height: self.frame.height - 12)
-        if(self.frame.height <= 0){
-            timer.invalidate()
+            height: self.frame.height - delta)
+        Swift.print(self.frame.height)
+        if(self.frame.height <= 12 ){
+            timer?.invalidate()
+            timer = nil
+            Swift.print("Mi rimuovo da superview subviews")
             self.removeFromSuperview()
         }
         if(selectedLevel != -1){
@@ -44,19 +75,24 @@ class MySheetView: NSView {
     
     func openFrameAnimation(){
         self.frame = NSRect(x: self.frame.origin.x,
-            y: self.frame.origin.y-12,
+            y: self.frame.origin.y-delta,
             width: self.frame.width,
-            height: self.frame.height + 12)
-        if(self.frame.height >= self.finalFrame.height){
+            height: self.frame.height + delta)
+        if(self.frame.height >= self.finalFrame.height - 1){
             self.frame = self.finalFrame
-            timer.invalidate()
+            timer?.invalidate()
+            timer = nil
         }
         self.needsDisplay = true
     }
     
     func dismissView(){
-        NSTimer.scheduledTimerWithTimeInterval(0.003, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
-        self.superview?.becomeFirstResponder()
+        delta = self.frame.height/35
+        if (timer != nil) {
+            timer?.invalidate()
+        }
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
+        //self.superview?.becomeFirstResponder()
     }
     
 }
