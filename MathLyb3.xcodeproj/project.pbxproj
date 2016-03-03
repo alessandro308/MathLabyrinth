@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218B6E41C7E859A00569E1A /* blackBackground.swift */; };
-		D21E0DFE1C834BFC00AC0985 /* LWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E0DFD1C834BFC00AC0985 /* LWView.swift */; };
 		D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22044051C7BA3A100701252 /* RandomNumberBackground.swift */; };
 		D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235E2B91C7390D600CD11C9 /* LevelButton.swift */; };
+		D2653F2A1C87579F0027A038 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2653F291C87579F0027A038 /* Toolbar.swift */; };
+		D2653F2C1C8782060027A038 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2653F2B1C8782060027A038 /* Level.swift */; };
 		D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E351C82489C009E3663 /* CreateLevelController.swift */; };
 		D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E3A1C824B6E009E3663 /* SheetView.swift */; };
 		D2701E3E1C824EB2009E3663 /* PlayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2701E3C1C824EB2009E3663 /* PlayGame.swift */; };
@@ -26,6 +27,7 @@
 		D2B671281C72B6D700538B6A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B671261C72B6D700538B6A /* MainViewController.xib */; };
 		D2CB12D31C806E0300214111 /* MenuBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CB12D21C806E0300214111 /* MenuBtn.swift */; };
 		D2CB12D41C808D0400214111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B671081C72B2C900538B6A /* Assets.xcassets */; };
+		D2D7BB281C838BD500C22B6C /* CustomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7BB271C838BD500C22B6C /* CustomLevel.swift */; };
 		D2FCE29B1C7C584100C19C7B /* globalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FCE29A1C7C584100C19C7B /* globalVar.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,9 +43,10 @@
 
 /* Begin PBXFileReference section */
 		D218B6E41C7E859A00569E1A /* blackBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackBackground.swift; sourceTree = "<group>"; };
-		D21E0DFD1C834BFC00AC0985 /* LWView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LWView.swift; sourceTree = "<group>"; };
 		D22044051C7BA3A100701252 /* RandomNumberBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberBackground.swift; sourceTree = "<group>"; };
 		D235E2B91C7390D600CD11C9 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
+		D2653F291C87579F0027A038 /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		D2653F2B1C8782060027A038 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		D2701E351C82489C009E3663 /* CreateLevelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLevelController.swift; sourceTree = "<group>"; };
 		D2701E3A1C824B6E009E3663 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		D2701E3C1C824EB2009E3663 /* PlayGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGame.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 		D2B671251C72B6D700538B6A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D2B671261C72B6D700538B6A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		D2CB12D21C806E0300214111 /* MenuBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBtn.swift; sourceTree = "<group>"; };
+		D2D7BB271C838BD500C22B6C /* CustomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLevel.swift; sourceTree = "<group>"; };
 		D2FCE29A1C7C584100C19C7B /* globalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = globalVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				D2701E351C82489C009E3663 /* CreateLevelController.swift */,
-				D21E0DFD1C834BFC00AC0985 /* LWView.swift */,
+				D2D7BB271C838BD500C22B6C /* CustomLevel.swift */,
+				D2653F291C87579F0027A038 /* Toolbar.swift */,
 			);
 			name = CreateLevelController;
 			sourceTree = "<group>";
@@ -142,8 +147,9 @@
 				D2B671251C72B6D700538B6A /* MainViewController.swift */,
 				D2701E3A1C824B6E009E3663 /* SheetView.swift */,
 				D2B671261C72B6D700538B6A /* MainViewController.xib */,
-				D2701E391C8248A6009E3663 /* CreateLevelController */,
+				D2653F2B1C8782060027A038 /* Level.swift */,
 				D218B6E41C7E859A00569E1A /* blackBackground.swift */,
+				D2701E391C8248A6009E3663 /* CreateLevelController */,
 				D26CDB8A1C77872C008AF56C /* SelectLevelController */,
 				D2B49F751C7F87D1009F5ACE /* PlayGame */,
 				D2B6710D1C72B2C900538B6A /* Info.plist */,
@@ -266,16 +272,18 @@
 				D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */,
 				D2701E3E1C824EB2009E3663 /* PlayGame.swift in Sources */,
 				D2B671271C72B6D700538B6A /* MainViewController.swift in Sources */,
+				D2D7BB281C838BD500C22B6C /* CustomLevel.swift in Sources */,
 				D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */,
 				D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */,
-				D21E0DFE1C834BFC00AC0985 /* LWView.swift in Sources */,
 				D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */,
 				D2701E411C82507E009E3663 /* MyWindow.swift in Sources */,
 				D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */,
 				D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */,
+				D2653F2A1C87579F0027A038 /* Toolbar.swift in Sources */,
 				D2B671231C72B2F500538B6A /* LevelScrollController.swift in Sources */,
 				D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */,
 				D2CB12D31C806E0300214111 /* MenuBtn.swift in Sources */,
+				D2653F2C1C8782060027A038 /* Level.swift in Sources */,
 				D2FCE29B1C7C584100C19C7B /* globalVar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

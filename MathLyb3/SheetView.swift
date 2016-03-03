@@ -16,18 +16,19 @@ class MySheetView: NSView {
     var mouseEventMonitor : AnyObject! = nil
     var clickOutOfBound: Bool = false
     var delta = CGFloat(10)
+    var outClickClose: Bool = true
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
         self.finalFrame = frameRect
-        
+        self.delta = frame.height / 20
         self.frame = NSRect(x: self.finalFrame.origin.x, y: frame.origin.y+frame.height, width: frame.width, height: 0)
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "openFrameAnimation", userInfo: nil, repeats: true)
-        
+            
         self.mouseEventMonitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDownMask, handler: { (theEvent : NSEvent) -> NSEvent? in
-            if !self.frame.contains(theEvent.locationInWindow) && theEvent.clickCount != 2 {
+            if self.outClickClose && !self.frame.contains(theEvent.locationInWindow) && theEvent.clickCount == 1 {
                 self.clickOutOfBound = true
             }
             return theEvent
@@ -39,7 +40,7 @@ class MySheetView: NSView {
             }
         )
         self.mouseEventMonitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.LeftMouseUpMask, handler: { (theEvent : NSEvent) -> NSEvent? in
-            if self.clickOutOfBound{
+            if self.outClickClose && self.clickOutOfBound {
                 if(self.mouseEventMonitor != nil){
                     NSEvent.removeMonitor(self.mouseEventMonitor)
                     self.mouseEventMonitor = nil
@@ -85,12 +86,10 @@ class MySheetView: NSView {
     }
     
     func dismissView(){
-        delta = self.frame.height/35
         if (timer != nil) {
             timer?.invalidate()
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
-        //self.superview?.becomeFirstResponder()
     }
     
     func onOpen(){

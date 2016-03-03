@@ -23,7 +23,6 @@ class blackBackground: NSView {
         let pt1 = NSBezierPath(rect: NSRect(x: 0+offset, y: 0+offset, width: self.frame.size.width-2*offset, height: self.frame.size.height-2*offset))
         pt1.lineJoinStyle = NSLineJoinStyle.RoundLineJoinStyle
         pt1.lineWidth = offset/2
-        
         pt1.stroke()
     }
     

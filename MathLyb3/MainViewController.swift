@@ -11,6 +11,7 @@ import Cocoa
 class MainViewController: NSViewController {
     
     override var acceptsFirstResponder: Bool { get {return true} }
+    
     var composeLevelView:NSView = NSView()
     var scr = NSView()
     

@@ -22,7 +22,7 @@ class closeBtn: NSView{
     }
     
     override func mouseDown(theEvent: NSEvent) {
-        let cont = self.superview?.superview as! LevelScrollController
+        let cont = self.superview?.superview as! MySheetView
         cont.dismissView()
     }
 }
@@ -34,7 +34,7 @@ class MyScrollView: NSScrollView{
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         //super.contentView.copiesOnScroll = true
-        self.addSubview(closeBtn(frame: NSRect(x: self.frame.width - 30, y: self.frame.height-25, width: 26, height: 18)))
+        //self.addSubview(closeBtn(frame: NSRect(x: self.frame.width - 30, y: self.frame.height-25, width: 26, height: 18)))
     }
 
     required init?(coder: NSCoder) {

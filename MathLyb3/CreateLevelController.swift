@@ -8,45 +8,73 @@
 
 import Cocoa
 
-class CreateLevelController: MySheetView {
+class closeEditLevel: NSView{
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+        let pt = NSBezierPath()
+        pt.moveToPoint(NSMakePoint(2, 2))
+        pt.lineToPoint(NSMakePoint(self.frame.width / 2, 15))
+        pt.lineToPoint(NSMakePoint(self.frame.width-2, 2))
+        pt.lineCapStyle = NSLineCapStyle.RoundLineCapStyle
+        pt.lineWidth = 2
+        NSColor.whiteColor().setStroke()
+        pt.stroke()
+    }
     
-    var lwviews: [LWView] = []
+    override func mouseDown(theEvent: NSEvent) {
+        let cont = self.superview as! MySheetView
+        cont.dismissView()
+    }
+}
+
+class CreateLevelController: MySheetView {
+
+    var canvas:CustomLevel? = nil;
+    var toolbar: Toolbar? = nil;
+    let toolbarWidth:CGFloat = 40
+    var btn : closeEditLevel? = nil;
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        lwviews.append(LWView(x: 75, y: 50, width: 25, height: 50, parent: self))
+        
+        outClickClose = false
+        let canvasFrame = NSRect(x: 0, y: 0, width: self.frame.width - toolbarWidth, height: self.finalFrame.height)
+        canvas = CustomLevel(frame:canvasFrame)
+        self.addSubview(canvas!)
+        toolbar = Toolbar(frame: NSRect(x: self.frame.width - toolbarWidth, y:0, width: toolbarWidth, height: self.finalFrame.height ))
+        self.addSubview(toolbar!)
+        
+        btn = closeEditLevel(frame: NSRect(origin: NSMakePoint(10, self.finalFrame.height - 30), size: CGSize(width: 30,height: 30)))
+        self.addSubview(btn!)
+        
+        //TrackingArea for canvas
+        let options : NSTrackingAreaOptions = [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.InVisibleRect, NSTrackingAreaOptions.MouseEnteredAndExited, NSTrackingAreaOptions.MouseMoved]
+        let trk = NSTrackingArea(rect: canvasFrame, options: options, owner: canvas, userInfo: nil)
+        canvas?.addTrackingArea(trk)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onResize:", name: NSWindowDidResizeNotification, object: nil)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        canvas = CustomLevel(frame: NSRect(x: 0, y: 0, width: self.frame.width - toolbarWidth, height: self.frame.height))
     }
+    
     
     override func drawRect(dirtyRect: NSRect) {
-        NSBezierPath(rect: NSRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)).fill()
-        for subview in lwviews {
-            subview.drawRect(dirtyRect)
-        }
+        super.drawRect(dirtyRect)
     }
     
-    override func keyDown(theEvent: NSEvent) {
-        if theEvent.keyCode == 0x35{
-            self.dismissView()
-        }
+    func updateContentSize(){
+        Swift.print("CreateLevelController: updateContentSize")
+        canvas!.setFrameSize( NSSize(width: self.frame.width - toolbarWidth, height: self.frame.height) )
+        toolbar!.setFrameSize( NSSize(width: toolbarWidth, height: self.frame.height) )
+        toolbar!.setFrameOrigin( NSMakePoint(self.frame.width - toolbarWidth, 0 ))
+        btn!.setFrameOrigin(NSMakePoint(10, self.frame.height - 30))
     }
 
     func onResize(theEvent : NSEvent){
-        for subview in lwviews {
-            subview.updateFrame()
-        }
-        self.needsDisplay = true
+        updateContentSize()
     }
-    
-    override func onOpen() {
-        for subview in lwviews {
-            subview.updateFrame()
-        }
-    }
-    
     
 }

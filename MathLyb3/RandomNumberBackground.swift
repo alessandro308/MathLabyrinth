@@ -99,7 +99,6 @@ class RandomNumberBackground: NSView {
             self.window?.styleMask = NSBorderlessWindowMask | NSResizableWindowMask | NSFullScreenWindowMask
         }
         else if(theEvent.clickCount == 2){
-            Swift.print("Eccome")
             self.window?.setFrame(self.previousFrame, display:  true, animate: true)
             self.window?.styleMask = NSBorderlessWindowMask | NSResizableWindowMask
         }
