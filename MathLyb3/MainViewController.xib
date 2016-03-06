@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="513" height="335"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="FTr-2a-qWY" customClass="RandomNumberBackground" customModule="MathLyb3" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="513" height="335"/>
+                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTr-2a-qWY" customClass="RandomNumberBackground" customModule="MathLyb3" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="570" height="335"/>
                     <subviews>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
                             <rect key="frame" x="137" y="72" width="239" height="191"/>

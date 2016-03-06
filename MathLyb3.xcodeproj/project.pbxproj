@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D218B6E51C7E859A00569E1A /* blackBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218B6E41C7E859A00569E1A /* blackBackground.swift */; };
 		D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22044051C7BA3A100701252 /* RandomNumberBackground.swift */; };
+		D232FF7D1C8C7FB00075068E /* TextViewEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D232FF7C1C8C7FB00075068E /* TextViewEditCell.swift */; };
 		D235E2BA1C7390D600CD11C9 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235E2B91C7390D600CD11C9 /* LevelButton.swift */; };
 		D2653F2A1C87579F0027A038 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2653F291C87579F0027A038 /* Toolbar.swift */; };
 		D2653F2C1C8782060027A038 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2653F2B1C8782060027A038 /* Level.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		D218B6E41C7E859A00569E1A /* blackBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackBackground.swift; sourceTree = "<group>"; };
 		D22044051C7BA3A100701252 /* RandomNumberBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberBackground.swift; sourceTree = "<group>"; };
+		D232FF7C1C8C7FB00075068E /* TextViewEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewEditCell.swift; sourceTree = "<group>"; };
 		D235E2B91C7390D600CD11C9 /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		D2653F291C87579F0027A038 /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		D2653F2B1C8782060027A038 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				D2701E351C82489C009E3663 /* CreateLevelController.swift */,
 				D2D7BB271C838BD500C22B6C /* CustomLevel.swift */,
+				D232FF7C1C8C7FB00075068E /* TextViewEditCell.swift */,
 				D2653F291C87579F0027A038 /* Toolbar.swift */,
 			);
 			name = CreateLevelController;
@@ -276,6 +279,7 @@
 				D2B671071C72B2C900538B6A /* AppDelegate.swift in Sources */,
 				D2B49F771C7F8823009F5ACE /* GameView.swift in Sources */,
 				D2701E3B1C824B6E009E3663 /* SheetView.swift in Sources */,
+				D232FF7D1C8C7FB00075068E /* TextViewEditCell.swift in Sources */,
 				D2701E411C82507E009E3663 /* MyWindow.swift in Sources */,
 				D22044061C7BA3A100701252 /* RandomNumberBackground.swift in Sources */,
 				D2701E371C82489C009E3663 /* CreateLevelController.swift in Sources */,

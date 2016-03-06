@@ -66,7 +66,6 @@ class CreateLevelController: MySheetView {
     }
     
     func updateContentSize(){
-        Swift.print("CreateLevelController: updateContentSize")
         canvas!.setFrameSize( NSSize(width: self.frame.width - toolbarWidth, height: self.frame.height) )
         toolbar!.setFrameSize( NSSize(width: toolbarWidth, height: self.frame.height) )
         toolbar!.setFrameOrigin( NSMakePoint(self.frame.width - toolbarWidth, 0 ))
