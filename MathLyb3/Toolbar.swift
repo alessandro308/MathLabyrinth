@@ -75,7 +75,6 @@ class Toolbar: NSView {
         ]
         str.drawInRect(NSRect(x: editCellFrame.origin.x + 4, y: editCellFrame.origin.y - 7, width: editCellFrame.width, height: editCellFrame.height), withAttributes: attrs)
         
-        
         //Exit
         NSColor.yellowColor().setStroke()
         

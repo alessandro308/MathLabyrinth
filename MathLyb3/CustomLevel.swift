@@ -22,9 +22,24 @@ class CustomLevel: NSView {
     var levelPositionOriginPoint : NSPoint? = nil
     let level = Level(width: 30, height: 30)
     let mtxTools = NSAffineTransform()
+    var saveLevelInput : SaveTextInput? = nil ;
     
     override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return true
+    }
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        saveLevelInput = SaveTextInput(frame: NSRect(origin: NSPoint.zero, size: CGSize(width: 100, height: 20)))
+        saveLevelInput!.target = saveLevelInput
+        saveLevelInput!.placeholderString = "Save Level"
+        saveLevelInput!.level = self.level
+        self.addSubview(saveLevelInput!)
+    }
+    
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func drawRect(dirtyRect: NSRect) {
@@ -258,6 +273,9 @@ class CustomLevel: NSView {
             default:
                 break
         }
+        if selectedTool != tools.pan{
+            saveLevelInput?.textColor = NSColor.redColor()
+        }
         
     }
     
@@ -353,6 +371,14 @@ class CustomLevel: NSView {
                 let pt2level = mtx.transformPoint(mouseUpPt)
                 level.addCell(tools.startPosition, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
                 mtx.invert()
+                let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
+                let tv = TextViewEditCell(frame: tvFrame)
+                tv.selectable = true
+                tv.stringValue = "3"
+                tv.editable = true
+                self.addSubview(tv)
+                tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
+                tv.level = self.level
             default:
                 break
         }

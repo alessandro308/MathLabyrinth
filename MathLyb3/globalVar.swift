@@ -11,6 +11,7 @@ import Cocoa
 
 var selectedLevel = -1;
 var levels = []
+var totalLevel = 0
 
 func nc() -> CGFloat{
     return CGFloat(Int.random(0...100))/100

@@ -18,8 +18,6 @@ class TextViewEditCell: NSTextField {
         return true
     }
     
-    
-    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         eventMonitor1 = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDownMask, handler: { (theEvent : NSEvent) -> NSEvent? in
@@ -53,9 +51,6 @@ class TextViewEditCell: NSTextField {
                 self.save()
             }
         })
-        
-        self.target = self
-        self.action = "save"
 
     }
     
@@ -68,8 +63,8 @@ class TextViewEditCell: NSTextField {
 
         // Drawing code here.
     }
-    override func controlTextDidEndEditing(obj: NSNotification) {
-        super.controlTextDidEndEditing(obj)
+    override func textDidEndEditing(obj: NSNotification) {
+        super.textDidEndEditing(obj)
         save()
     }
     
@@ -85,7 +80,11 @@ class TextViewEditCell: NSTextField {
                 level!.editCell(Int(cella!.x), y: Int(cella!.y), value: (self.stringValue))
             }
         }
-        
+        if(ce.type == tools.startPosition){
+            if self.stringValue[0] == "0" || self.stringValue[0] == "1" || self.stringValue[0] == "2" || self.stringValue[0] == "3" || self.stringValue[0] == "4" || self.stringValue[0] == "5" || self.stringValue[0] == "6" || self.stringValue[0] == "7" || self.stringValue[0] == "8" || self.stringValue[0] == "9"{
+                level!.editCell(Int(cella!.x), y: Int(cella!.y), value: (self.stringValue))
+            }
+        }
         self.removeFromSuperview()
         if self.eventMonitor1 != nil{
             NSEvent.removeMonitor(self.eventMonitor1!)

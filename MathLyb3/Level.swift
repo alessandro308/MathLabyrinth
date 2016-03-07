@@ -14,10 +14,14 @@ class Cell{
     var value : String = ""
     var type : tools = tools.null
     
+    
     init(type: tools = tools.null){
         self.type = type
         if type == tools.conditional {
             value = "=1"
+        }
+        else if type == tools.startPosition{
+            value = "5"
         }
         else{
             value = "*2"
@@ -29,6 +33,7 @@ class Level {
     
     var width:Int = 0
     var height:Int = 0
+    var number : Int = 0
     
     var map : [[Cell]] = []
     
@@ -42,11 +47,12 @@ class Level {
         }
         self.width = Int(width)
         self.height = Int(height)
+        self.number = totalLevel + 1
     }
     
-    func addFrame(rect: NSRect){
-        
-    }
+//    func addFrame(rect: NSRect){
+//        
+//    }
     
     func addCell(t : tools, x:Int, y:Int){
         switch t{
@@ -129,7 +135,7 @@ class Level {
                         NSBezierPath(rect: fr).fill()
                         str.drawInRect(strfr, withAttributes: attrs)
                 case tools.startPosition:
-                    let str = "YOU"
+                    let str = NSString(string: String(map[i][j].value))
                     let fontsize = str.sizeWithAttributes(attrs)
                     let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
                     let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
@@ -164,6 +170,74 @@ class Level {
                 }
             }
         }
+    }
+    
+    func saveOnFile(name: String){
+        //Analisi dimensionale
+        var topsx : (x: Int,y: Int) = (0,0)
+        var bottomdx : (x: Int,y: Int) = (0,0)
+        //Prima cella in alto a sx
+        for(var i = 0; i<width; i++){
+            for(var j = 0; j<height; j++){
+                if(map[i][j].type != tools.null){
+                    topsx = (i, j)
+                }
+            }
+        }
+        for(var i = width-1; i>=0; i--){
+            for(var j = height-1; j>=0; j--){
+                if(map[i][i].type != tools.null){
+                    bottomdx = (i,j)
+                }
+            }
+        }
+        
+        
+        var str = name+"\n"+String(topsx.x)+" "+String(topsx.y)+" "+String(bottomdx.x)+" "+String(bottomdx.y)+"\n"
+        for(var i = topsx.x; i<bottomdx.x; i++){
+            for(var j = topsx.y; j<bottomdx.y; j++){
+                switch map[i][j].type{
+                case .null:
+                    str += "N"+" "
+                case .simple:
+                    str += "S"+map[i][j].value+" "
+                case .oneShot:
+                    str += "O"+map[i][j].value+" "
+                case .block:
+                    str += "B"+" "
+                case .conditional:
+                    str += "C"+map[i][j].value+" "
+                case .exit:
+                    str += "E"+" "
+                case .startPosition:
+                    str += "S"+map[i][j].value+" "
+                default:
+                    str += "?"+" "
+                }
+            }
+            str += "\n"
+        }
+        
+        //If la cartella non esiste
+        let home = NSHomeDirectory()
+        let dataPath = home.stringByAppendingString("/MathLabyrinth")
+        if(!NSFileManager.defaultManager().fileExistsAtPath(dataPath)){
+            do{   try NSFileManager.defaultManager().createDirectoryAtPath(dataPath, withIntermediateDirectories: false, attributes: nil)
+            }
+            catch let error as NSError{
+                Swift.print(error)
+            }
+        }
+        
+        do{
+            try str.writeToFile(dataPath.stringByAppendingString("/"+String(self.number)+".level"), atomically: true, encoding: NSUTF8StringEncoding)
+        } catch let e as NSError{
+            Swift.print(e)
+        }
+        
+        //READ A FILE
+        let x = try? NSString(contentsOfFile: dataPath.stringByAppendingString("/"+String(self.number)+".level"), encoding: NSUTF8StringEncoding)
+        Swift.print(x!)
     }
 
 }
