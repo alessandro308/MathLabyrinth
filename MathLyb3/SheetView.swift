@@ -90,6 +90,7 @@ class MySheetView: NSView {
             timer?.invalidate()
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "closeFrameAnimation", userInfo: nil, repeats: true)
+        NSCursor.unhide()
     }
     
     func onOpen(){

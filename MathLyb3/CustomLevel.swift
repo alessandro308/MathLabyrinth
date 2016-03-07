@@ -260,16 +260,19 @@ class CustomLevel: NSView {
             case tools.pan:
                 ultimoPuntoTraslato = mouseDownPt
             case tools.editCell:
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
-                let tv = TextViewEditCell(frame: tvFrame)
-                tv.selectable = true
-                tv.stringValue = "0"
-                tv.editable = true
-                self.addSubview(tv)
-                tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
-                tv.level = self.level
-                selectedTool = tools.null
+                let pt2level = mtx.transformPoint(mouseDownPt)
+                Swift.print("Clicked on cell ", Int(pt2level.x/40), Int(pt2level.y/40))
+                if level.map[Int(pt2level.x/40)][Int(pt2level.y/40)].type != .null{
+                    let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
+                    let tv = TextViewEditCell(frame: tvFrame)
+                    tv.selectable = true
+                    tv.stringValue = "0"
+                    tv.editable = true
+                    self.addSubview(tv)
+                    tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
+                    tv.level = self.level
+                    selectedTool = tools.null
+                }
             default:
                 break
         }

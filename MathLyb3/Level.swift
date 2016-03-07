@@ -172,30 +172,66 @@ class Level {
         }
     }
     
+    func columnIsNull(i: Int) -> Bool{
+        for(var j = 0; j<height; j++){
+            if map[i][j].type != tools.null {
+                return false;
+            }
+        }
+        return true;
+    }
+    func rowIsNull(i: Int) -> Bool{
+        for(var j=0; j<width; j++){
+            if map[j][i].type != .null {
+                return false
+            }
+        }
+        return true
+    }
+    
     func saveOnFile(name: String){
         //Analisi dimensionale
-        var topsx : (x: Int,y: Int) = (0,0)
-        var bottomdx : (x: Int,y: Int) = (0,0)
-        //Prima cella in alto a sx
-        for(var i = 0; i<width; i++){
-            for(var j = 0; j<height; j++){
-                if(map[i][j].type != tools.null){
-                    topsx = (i, j)
-                }
-            }
+        //(0,0) = in basso a sx
+        //(width, height) = in alto a destra
+        //Map è salvata per [colonna][riga]
+        var topsx : (x: Int,y: Int) = (0,height)
+        var bottomdx : (x: Int,y: Int) = (width,0)
+        //Conta le colonne vuote prima
+        for(var i=0; i<width; i++){
+            if columnIsNull(i) {
+                topsx.x++
+            } else{ break }
         }
-        for(var i = width-1; i>=0; i--){
-            for(var j = height-1; j>=0; j--){
-                if(map[i][i].type != tools.null){
-                    bottomdx = (i,j)
-                }
+        //Conta le colonne vuote dopo
+        for(var i=width-1; i != 0; i--){
+            if columnIsNull(i) {
+                bottomdx.x--
+            } else { bottomdx.x--; break }
+        }
+        //Conta le righe vuote sotto
+        for(var i=0; i<height; i++){
+            if rowIsNull(i) {
+                bottomdx.y++
+            }
+            else{
+                break
             }
         }
         
+        //Conta le righe vuote s
+        for(var i=height-1; i != 0; i--){
+            if rowIsNull(i) {
+                topsx.y--
+            }
+            else{
+                topsx.y--
+                break
+            }
+        }
         
         var str = name+"\n"+String(topsx.x)+" "+String(topsx.y)+" "+String(bottomdx.x)+" "+String(bottomdx.y)+"\n"
-        for(var i = topsx.x; i<bottomdx.x; i++){
-            for(var j = topsx.y; j<bottomdx.y; j++){
+        for(var j = topsx.y; j>=bottomdx.y; j--){
+            for(var i = topsx.x; i<=bottomdx.x; i++){
                 switch map[i][j].type{
                 case .null:
                     str += "N"+" "

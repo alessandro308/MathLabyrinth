@@ -25,22 +25,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MathLyb3/graphElements/LabelClickable.swift"
-            timestampString = "477864397.233745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "mouseDown(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MathLyb3/globalVar.swift"
             timestampString = "479001368.165091"
             startingColumnNumber = "9223372036854775807"
@@ -64,22 +48,6 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "updateNumbers()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathLyb3/LevelScrollController.swift"
-            timestampString = "478087618.992777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "mouseDown(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
-            timestampString = "479001368.165091"
+            timestampString = "479046766.330831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "saveOnFile(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/SaveTextInput.swift"
-            timestampString = "478988301.755346"
+            timestampString = "479040459.513432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "textDidEndEditing(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
-            timestampString = "479001368.165091"
+            timestampString = "479046766.330831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -442,12 +410,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
-            timestampString = "479004096.406153"
+            timestampString = "479046766.330831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "saveOnFile(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathLyb3/Level.swift"
+            timestampString = "479033002.273541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "editCell(_:y:value:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
