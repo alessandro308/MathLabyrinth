@@ -9,6 +9,8 @@
 import Cocoa
 
 class closeEditLevel: NSView{
+    
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         let pt = NSBezierPath()
@@ -45,6 +47,7 @@ class CreateLevelController: MySheetView {
         self.addSubview(toolbar!)
         
         btn = closeEditLevel(frame: NSRect(origin: NSMakePoint(10, self.finalFrame.height - 30), size: CGSize(width: 30,height: 30)))
+        btn?.becomeFirstResponder()
         self.addSubview(btn!)
         
         //TrackingArea for canvas
@@ -74,6 +77,17 @@ class CreateLevelController: MySheetView {
 
     func onResize(theEvent : NSEvent){
         updateContentSize()
+    }
+    
+    override func dismissView() {
+        super.dismissView()
+        totalLevel++
+    }
+    
+    override func keyDown(theEvent: NSEvent) {
+        if theEvent.keyCode == 53{
+            self.dismissView()
+        }
     }
     
 }

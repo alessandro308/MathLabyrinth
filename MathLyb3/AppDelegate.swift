@@ -18,8 +18,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let main = MainViewController()
         window.contentViewController = main
         window.acceptsMouseMovedEvents = true
-        window.styleMask = NSBorderlessWindowMask | NSResizableWindowMask
+        window.styleMask = NSResizableWindowMask
         window.movableByWindowBackground = true
+        
+            //Count Level
+            let fileManager = NSFileManager.defaultManager()
+            let home = NSHomeDirectory()
+            let dataPath = home.stringByAppendingString("/MathLabyrinth")
+            let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(dataPath)!
+            while let element = enumerator.nextObject() as? String {// checks the extension
+                if element.hasSuffix("level"){
+                    totalLevel++;
+                    let x = try? NSString(contentsOfFile: dataPath+"/"+element, encoding: NSUTF8StringEncoding)
+                    let a : NSArray = (x?.componentsSeparatedByString("\n"))!
+                    levels.addObject(a[0])
+                }
+            }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

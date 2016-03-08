@@ -33,8 +33,6 @@ class MyScrollView: NSScrollView{
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        //super.contentView.copiesOnScroll = true
-        //self.addSubview(closeBtn(frame: NSRect(x: self.frame.width - 30, y: self.frame.height-25, width: 26, height: 18)))
     }
 
     required init?(coder: NSCoder) {
@@ -49,7 +47,7 @@ class MyScrollView: NSScrollView{
 class LevelScrollController: MySheetView {
 
     var scrollView: NSScrollView! = nil
-
+    var scrolledView : NSView! = nil
     override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return true
     }
@@ -63,17 +61,19 @@ class LevelScrollController: MySheetView {
         self.frame = NSRect(x: self.finalFrame.origin.x, y: frame.origin.y+frame.height, width: frame.width, height: 0)
         
         let f = frame
-        let scrolledFrame = NSRect(x: 0, y: 0, width: f.size.width, height: 2500)
-        let scrolledView = NSView(frame: scrolledFrame)
+        let height = CGFloat(50*levels.count) < self.frame.height ? self.frame.height : CGFloat(50*levels.count)
+        let scrolledFrame = NSRect(x: 0, y: 0, width: f.size.width, height: height)
+        scrolledView = NSView(frame: scrolledFrame)
         
         // Inserisco pulsanti di esempio
-        for i in 1 ... 50{
+        let count = levels.count
+        for(var i = 1; i<=count; i++){
             let bt = LevelButton(frame: NSRect( x: 0,
                                                 y: scrolledFrame.size.height -  CGFloat(i*50),
                                                 width: scrolledView.frame.width,
                                                 height: 50),
-                                 name: "Un fiume in piena",
-                                 number: 1)
+                                 name: levels[i-1] as! NSString,
+                                 number: i)
             scrolledView.addSubview(bt)
         }
         
@@ -101,8 +101,10 @@ class LevelScrollController: MySheetView {
         super.viewDidMoveToWindow()
         //self.window!.makeFirstResponder(self) //Riga maledetta. 4 ore per trovare questa cosa!
     }
-
     
+    func updateFrame(frame: NSRect){
+        
+    }
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         

@@ -16,6 +16,11 @@
         <customView id="Hz6-mo-xeY" customClass="GameView" customModule="MathLyb3" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-Ln-lzl">
+                    <rect key="frame" x="0.0" y="0.0" width="402" height="272"/>
+                </customView>
+            </subviews>
         </customView>
     </objects>
 </document>

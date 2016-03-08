@@ -386,4 +386,5 @@ class CustomLevel: NSView {
                 break
         }
     }
+
 }

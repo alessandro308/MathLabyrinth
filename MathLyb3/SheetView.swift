@@ -66,7 +66,7 @@ class MySheetView: NSView {
             timer = nil
             self.removeFromSuperview()
         }
-        if(selectedLevel != -1){
+        if(selectedLevel != nil){
             self.window?.contentViewController = PlayGame()
         }
     }

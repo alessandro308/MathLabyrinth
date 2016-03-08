@@ -134,13 +134,19 @@ class LevelButton: NSView {
     override func mouseUp(theEvent: NSEvent) {
         self.textColor = NSColor.whiteColor()
         self.bgColor = NSColor(hex: 0x6AAFE6, alpha: 0.95)
-        selectedLevel = self.number;
         
         let sv = self.superview?.superview?.superview?.superview as! LevelScrollController
         sv.dismissView()
         
-        self.window?.styleMask = NSFullScreenWindowMask
+        //self.window?.styleMask = NSFullScreenWindowMask
         self.window?.setFrame((NSScreen.mainScreen()?.frame)!, display: true, animate: true)
         
+        //Count Level
+        let home = NSHomeDirectory()
+        let dataPath = home.stringByAppendingString("/MathLabyrinth")
+
+        let x = try? NSString(contentsOfFile: dataPath+"/"+String(self.number)+".level", encoding: NSUTF8StringEncoding)
+        
+        selectedLevel = Level(str: x!)
     }
 }

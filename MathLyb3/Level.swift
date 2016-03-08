@@ -27,6 +27,11 @@ class Cell{
             value = "*2"
         }
     }
+    
+    init(type: tools = tools.null, value : String){
+        self.type = type
+        self.value = value
+    }
 }
 
 class Level {
@@ -34,7 +39,7 @@ class Level {
     var width:Int = 0
     var height:Int = 0
     var number : Int = 0
-    
+    var name : String? = nil
     var map : [[Cell]] = []
     
     init(width : CGFloat = 0, height : CGFloat = 0){
@@ -50,9 +55,40 @@ class Level {
         self.number = totalLevel + 1
     }
     
-//    func addFrame(rect: NSRect){
-//        
-//    }
+    init(str: NSString){
+        let a = str.componentsSeparatedByString("\n")
+        name = a[0]
+        let n = a[1].componentsSeparatedByString(" ")
+        width = Int(n[2])! - Int(n[0])! + 1
+        height = Int(n[1])! - Int(n[3])! + 1
+        for(var i = 0; i<width; i++){
+            map.append([])
+        }
+        for(var i = height-1; i>=0; i--){
+            let column = a[i+2].componentsSeparatedByString(" ")
+            for(var j = 0; j < width; j++){
+                let cellstr = column[j]
+                switch cellstr[0]{
+                    case "B":
+                        map[j].append(Cell(type: tools.block))
+                    case "I":
+                        map[j].append(Cell(type: tools.startPosition, value: (cellstr as NSString).substringFromIndex(1)))
+                    case "N":
+                        map[j].append(Cell())
+                    case "S":
+                        map[j].append(Cell(type: tools.simple, value: (cellstr as NSString).substringFromIndex(1)))
+                    case "O":
+                        map[j].append(Cell(type: tools.oneShot, value: (cellstr as NSString).substringFromIndex(1)))
+                    case "E":
+                        map[j].append(Cell(type: tools.exit))
+                    case "C":
+                        map[j].append(Cell(type: tools.conditional, value: (cellstr as NSString).substringFromIndex(1)))
+                    default:
+                        map[j].append(Cell())
+                }
+            }
+        }
+    }
     
     func addCell(t : tools, x:Int, y:Int){
         switch t{
@@ -189,91 +225,99 @@ class Level {
         return true
     }
     
-    func saveOnFile(name: String){
-        //Analisi dimensionale
-        //(0,0) = in basso a sx
-        //(width, height) = in alto a destra
-        //Map è salvata per [colonna][riga]
-        var topsx : (x: Int,y: Int) = (0,height)
-        var bottomdx : (x: Int,y: Int) = (width,0)
-        //Conta le colonne vuote prima
-        for(var i=0; i<width; i++){
-            if columnIsNull(i) {
-                topsx.x++
-            } else{ break }
+    func saveOnFile(name1: String){
+        if name1.isEmpty {
+            self.name = "Default Name"
         }
-        //Conta le colonne vuote dopo
-        for(var i=width-1; i != 0; i--){
-            if columnIsNull(i) {
-                bottomdx.x--
-            } else { bottomdx.x--; break }
+        else{
+            self.name = name1
         }
-        //Conta le righe vuote sotto
-        for(var i=0; i<height; i++){
-            if rowIsNull(i) {
-                bottomdx.y++
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            //Analisi dimensionale
+            //(0,0) = in basso a sx
+            //(width, height) = in alto a destra
+            //Map è salvata per [colonna][riga]
+            var topsx : (x: Int,y: Int) = (0,self.height)
+            var bottomdx : (x: Int,y: Int) = (self.width,0)
+            //Conta le colonne vuote prima
+            for(var i=0; i<self.width; i++){
+                if self.columnIsNull(i) {
+                    topsx.x++
+                } else{ break }
             }
-            else{
-                break
+            //Conta le colonne vuote dopo
+            for(var i=self.width-1; i != 0; i--){
+                if self.columnIsNull(i) {
+                    bottomdx.x--
+                } else { bottomdx.x--; break }
             }
-        }
-        
-        //Conta le righe vuote s
-        for(var i=height-1; i != 0; i--){
-            if rowIsNull(i) {
-                topsx.y--
-            }
-            else{
-                topsx.y--
-                break
-            }
-        }
-        
-        var str = name+"\n"+String(topsx.x)+" "+String(topsx.y)+" "+String(bottomdx.x)+" "+String(bottomdx.y)+"\n"
-        for(var j = topsx.y; j>=bottomdx.y; j--){
-            for(var i = topsx.x; i<=bottomdx.x; i++){
-                switch map[i][j].type{
-                case .null:
-                    str += "N"+" "
-                case .simple:
-                    str += "S"+map[i][j].value+" "
-                case .oneShot:
-                    str += "O"+map[i][j].value+" "
-                case .block:
-                    str += "B"+" "
-                case .conditional:
-                    str += "C"+map[i][j].value+" "
-                case .exit:
-                    str += "E"+" "
-                case .startPosition:
-                    str += "S"+map[i][j].value+" "
-                default:
-                    str += "?"+" "
+            //Conta le righe vuote sotto
+            for(var i=0; i<self.height; i++){
+                if self.rowIsNull(i) {
+                    bottomdx.y++
+                }
+                else{
+                    break
                 }
             }
-            str += "\n"
-        }
-        
-        //If la cartella non esiste
-        let home = NSHomeDirectory()
-        let dataPath = home.stringByAppendingString("/MathLabyrinth")
-        if(!NSFileManager.defaultManager().fileExistsAtPath(dataPath)){
-            do{   try NSFileManager.defaultManager().createDirectoryAtPath(dataPath, withIntermediateDirectories: false, attributes: nil)
+            
+            //Conta le righe vuote s
+            for(var i=self.height-1; i != 0; i--){
+                if self.rowIsNull(i) {
+                    topsx.y--
+                }
+                else{
+                    topsx.y--
+                    break
+                }
             }
-            catch let error as NSError{
-                Swift.print(error)
+            
+            var str = self.name!
+            str += "\n"+String(topsx.x)+" "+String(topsx.y) + " "+String(bottomdx.x)+" "+String(bottomdx.y)+"\n"
+            for(var j = topsx.y; j>=bottomdx.y; j--){
+                for(var i = topsx.x; i<=bottomdx.x; i++){
+                    switch self.map[i][j].type{
+                    case .null:
+                        str += "N"+" "
+                    case .simple:
+                        str += "S"+self.map[i][j].value+" "
+                    case .oneShot:
+                        str += "O"+self.map[i][j].value+" "
+                    case .block:
+                        str += "B"+" "
+                    case .conditional:
+                        str += "C"+self.map[i][j].value+" "
+                    case .exit:
+                        str += "E"+" "
+                    case .startPosition:
+                        str += "I"+self.map[i][j].value+" "
+                    default:
+                        str += "?"+" "
+                    }
+                }
+                str += "\n"
             }
+            
+            //If la cartella non esiste
+            let home = NSHomeDirectory()
+            let dataPath = home.stringByAppendingString("/MathLabyrinth")
+            if(!NSFileManager.defaultManager().fileExistsAtPath(dataPath)){
+                do{   try NSFileManager.defaultManager().createDirectoryAtPath(dataPath, withIntermediateDirectories: false, attributes: nil)
+                }
+                catch let error as NSError{
+                    Swift.print(error)
+                }
+            }
+            
+            do{
+                try str.writeToFile(dataPath.stringByAppendingString("/"+String(self.number)+".level"), atomically: true, encoding: NSUTF8StringEncoding)
+            } catch let e as NSError{
+                Swift.print(e)
+            }
+            
+            levels.addObject(self.name!)
         }
-        
-        do{
-            try str.writeToFile(dataPath.stringByAppendingString("/"+String(self.number)+".level"), atomically: true, encoding: NSUTF8StringEncoding)
-        } catch let e as NSError{
-            Swift.print(e)
-        }
-        
-        //READ A FILE
-        let x = try? NSString(contentsOfFile: dataPath.stringByAppendingString("/"+String(self.number)+".level"), encoding: NSUTF8StringEncoding)
-        Swift.print(x!)
     }
 
 }

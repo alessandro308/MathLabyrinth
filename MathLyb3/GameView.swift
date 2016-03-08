@@ -21,6 +21,7 @@ class GameView: NSView {
         
         NSBezierPath(rect: NSRect(x: 0, y: 0, width: 500, height: 500)).fill()
         // Drawing code here.
+        selectedLevel?.draw()
     }
     
     override func keyDown(theEvent: NSEvent) {

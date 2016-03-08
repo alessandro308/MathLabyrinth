@@ -69,6 +69,7 @@ class TextViewEditCell: NSTextField {
     }
     
     func save(){
+        if !self.stringValue.isEmpty{
         let ce = level!.map[Int(cella!.x)][Int(cella!.y)]
         if(ce.type == tools.conditional){
             if self.stringValue[0] == ">" || self.stringValue[0] == "<" || self.stringValue[0] == "=" {
@@ -93,6 +94,7 @@ class TextViewEditCell: NSTextField {
         if self.eventMonitor2 != nil{
             NSEvent.removeMonitor(self.eventMonitor2!)
             self.eventMonitor2 = nil
+        }
         }
     }
     

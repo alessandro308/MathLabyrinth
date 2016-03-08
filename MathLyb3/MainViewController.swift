@@ -13,12 +13,13 @@ class MainViewController: NSViewController {
     override var acceptsFirstResponder: Bool { get {return true} }
     
     var composeLevelView:NSView = NSView()
-    var scr = NSView()
+    var scr = LevelScrollController()
     
     @IBOutlet var background: RandomNumberBackground!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    @IBOutlet var blackRect: blackBackground!
     
     override func awakeFromNib() {
         NSTimer.scheduledTimerWithTimeInterval(0.04, target: background, selector: "updateNumbers", userInfo: nil, repeats: true)
@@ -28,10 +29,11 @@ class MainViewController: NSViewController {
     @IBAction func btnLevelClicked(sender: AnyObject) {
         let f = self.view.frame
         scr = LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
-            y: f.size.height / 5 ,
+            y: f.size.height - 235 ,
             width: f.size.width*4 / 6  ,
-            height: f.size.height*4 / 5 ))
+            height: 235))
         scr.becomeFirstResponder()
+        
         self.view.addSubview(scr)
     }
 
@@ -55,13 +57,14 @@ class MainViewController: NSViewController {
             y: f.size.height / 20 ,
             width: f.size.width*5 / 6  ,
             height: f.size.height*18 / 20 )
-        composeLevelView.needsDisplay = true
-        
-        scr.frame = NSRect(x: f.size.width / 6 ,
-            y: f.size.height / 5 ,
+
+        scr.updateFrame(NSRect(x: f.size.width / 6 ,
+            y: f.size.height - 235 ,
             width: f.size.width*4 / 6  ,
-            height: f.size.height*4 / 5 )
+            height: 235 ) )
+        
         scr.needsDisplay = true
+        composeLevelView.needsDisplay = true
     }
     
 }

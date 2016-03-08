@@ -10,7 +10,11 @@ import Cocoa
 import AppKit
 
 class blackBackground: NSView {
-
+    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
+        return true
+    }
+    override var acceptsFirstResponder : Bool {get {return true}}
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         let offset = CGFloat(10)

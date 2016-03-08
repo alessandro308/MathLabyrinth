@@ -9,8 +9,8 @@
 import Foundation
 import Cocoa
 
-var selectedLevel = -1;
-var levels = []
+var selectedLevel : Level? = nil;
+var levels : NSMutableArray = NSMutableArray()
 var totalLevel = 0
 
 func nc() -> CGFloat{
@@ -81,9 +81,9 @@ extension String {
         return self[self.startIndex.advancedBy(i)]
     }
     
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
-    }
+//    subscript (i: Int) -> String {
+//        return String(self[i] as Character)
+//    }
     
     subscript (r: Range<Int>) -> String {
         let start = startIndex.advancedBy(r.startIndex)
