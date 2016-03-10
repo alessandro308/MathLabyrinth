@@ -41,7 +41,13 @@ class Parser{
             return String(n!-Int(m.substringFromIndex(1))!)
         }
         else if x.hasPrefix("**"){
-            return String(n!^^Int(m.substringFromIndex(1))!)
+            var pow = Int(m.substringFromIndex(2))!
+            var res = 1
+            while(pow > 0){
+                res = res*n!
+                pow--;
+            }
+            return String(res)
         }
         else if x.hasPrefix("/") || x.hasPrefix(":"){
             return String(n!/Int(m.substringFromIndex(1))!)

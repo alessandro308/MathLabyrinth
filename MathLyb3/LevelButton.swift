@@ -144,8 +144,10 @@ class LevelButton: NSView {
         //Count Level
         let home = NSHomeDirectory()
         let dataPath = home.stringByAppendingString("/MathLabyrinth")
-
-        let x = try? NSString(contentsOfFile: dataPath+"/"+String(self.number)+".level", encoding: NSUTF8StringEncoding)
+        
+        let fileNumber = levelsFile[self.name as String] as! String
+        Swift.print(fileNumber)
+        let x = try? NSString(contentsOfFile: dataPath+"/"+fileNumber, encoding: NSUTF8StringEncoding)
         
         selectedLevel = Level(str: x!)
         

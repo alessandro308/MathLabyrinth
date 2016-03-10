@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     let x = try? NSString(contentsOfFile: dataPath+"/"+element, encoding: NSUTF8StringEncoding)
                     let a : NSArray = (x?.componentsSeparatedByString("\n"))!
                     levels.addObject(a[0])
+                    levelsFile.setValue(element, forKey: a[0] as! String)
                 }
             }
     }

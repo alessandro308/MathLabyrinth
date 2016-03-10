@@ -11,6 +11,7 @@ import Cocoa
 
 var selectedLevel : Level? = nil;
 var levels : NSMutableArray = NSMutableArray()
+var levelsFile : NSMutableDictionary = NSMutableDictionary()
 var totalLevel = 0
 
 func nc() -> CGFloat{
