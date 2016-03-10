@@ -284,14 +284,14 @@ class CustomLevel: NSView {
         mtx.invert()
         let pt2level = mtx.transformPoint(mouseUpPt)
         mtx.invert()
-        let x = Int(floor(pt2level.x))/40
-        let y = Int(floor(pt2level.y))/40
-        if pt2level.x > 0 && pt2level.y > 0 && x < level.width && y < level.height {
             
         switch selectedTool{
             case tools.pan:
                 ultimoPuntoTraslato = mouseDownPt
             case tools.editCell:
+                let x = Int(floor(pt2level.x))/40
+                let y = Int(floor(pt2level.y))/40
+                if pt2level.x > 0 && pt2level.y > 0 && x < level.width && y < level.height {
                 if level.map[x][y].type != .null{
                     let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                     let tv = TextViewEditCell(frame: tvFrame)
@@ -303,6 +303,7 @@ class CustomLevel: NSView {
                     tv.level = self.level
                     selectedTool = tools.null
                 }
+                }
             default:
                 break
         }
@@ -310,7 +311,6 @@ class CustomLevel: NSView {
             saveLevelInput?.textColor = NSColor.redColor()
         }
             
-        }
     }
     
     override func mouseDragged(theEvent: NSEvent) {

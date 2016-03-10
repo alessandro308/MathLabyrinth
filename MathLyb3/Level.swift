@@ -421,8 +421,12 @@ class Level {
     
     */
     
+    
     func move(newCell:(x: Int, y: Int), from: coord){
         let myValue = map[youPosition.x][youPosition.y].value
+        if abs(Int(myValue)!)>10000{
+            return;
+        }
         if(newCell.y == height || newCell.y == -1 || newCell.x == -1 || newCell.x == width){ //Se sono all'ultima riga
             shake(from)
         }
