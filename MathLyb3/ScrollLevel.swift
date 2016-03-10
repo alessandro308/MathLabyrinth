@@ -19,6 +19,9 @@ class ScrollLevel: NSScrollView {
         if self.frame.size.width > CGFloat((selectedLevel?.width)!*40) {
             scrollEnable = false
         }
+        self.horizontalScroller?.alphaValue = 0
+        self.verticalScroller?.alphaValue = 0
+        
     }
 
     override func drawRect(dirtyRect: NSRect) {
