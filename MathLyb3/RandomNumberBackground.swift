@@ -18,7 +18,7 @@ class RandomNumberBackground: NSView {
     var previousFrame: NSRect = NSRect.zero
     
     var attrs: [String: AnyObject] = [
-        NSFontAttributeName: NSFont(name: "Helvetica", size: 120)!,
+        NSFontAttributeName: NSFont(name: "CODE Bold", size: 120)!,
         NSForegroundColorAttributeName: NSColor(calibratedWhite: 1, alpha: 0.7)
     ]
     
