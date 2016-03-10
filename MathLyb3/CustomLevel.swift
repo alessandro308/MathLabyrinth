@@ -20,7 +20,7 @@ class CustomLevel: NSView {
     var mtx = NSAffineTransform()
     var ultimoPuntoTraslato = NSPoint.zero
     var levelPositionOriginPoint : NSPoint? = nil
-    let level = Level(width: 30, height: 30)
+    let level = Level(width: 40, height: 30)
     let mtxTools = NSAffineTransform()
     var saveLevelInput : SaveTextInput? = nil ;
     
@@ -69,11 +69,12 @@ class CustomLevel: NSView {
     func drawDragTool(){
         let center = self.mousePosition
         //Disegna i tool che seguono il mouse
-        let square = NSSize(width: self.gridSize, height: self.gridSize)
+        let square = NSSize(width: self.gridSize-10, height: self.gridSize-10)
         let frameTool = NSRect(origin: NSPoint(x: mousePosition.x-self.gridSize/2,
             y: mousePosition.y-self.gridSize/2), size: square)
         
         switch selectedTool{
+            
         case tools.pan:
             let mtx = NSAffineTransform()
             mtx.translateXBy(center.x, yBy: center.y)
@@ -98,33 +99,67 @@ class CustomLevel: NSView {
             //Operazione oneshot
             NSColor.darkGrayColor().setFill()
             NSBezierPath(rect: frameTool).fill()
-            let str = NSString(string:"Wall")
-            let attrs = [
-                NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
-                NSForegroundColorAttributeName: NSColor.whiteColor()
-            ]
-            str.drawInRect(NSRect(x: frameTool.origin.x + 6, y: frameTool.origin.y - 7, width: frameTool.width, height: frameTool.height), withAttributes: attrs)
+            
         case tools.clear:
             //Operazione oneshot
             NSColor.darkGrayColor().setFill()
             NSBezierPath(rect: frameTool).fill()
-            let str = NSString(string:"DEL")
-            let attrs = [
-                NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
+        
+        case tools.exit:
+            let exitFrame = frameTool
+            NSColor.yellowColor().setStroke()
+            
+            NSBezierPath(rect: exitFrame).stroke()
+            let str = NSString(string:"Exit")
+            let attrs : [String : AnyObject] = [
+                NSFontAttributeName: NSFont(name: "Courier", size: 10)!,
                 NSForegroundColorAttributeName: NSColor.whiteColor()
             ]
-            str.drawInRect(NSRect(x: frameTool.origin.x + 6, y: frameTool.origin.y - 7, width: frameTool.width, height: frameTool.height), withAttributes: attrs)
+            str.drawInRect(NSRect(x: exitFrame.origin.x + 4, y: exitFrame.origin.y - 7, width: exitFrame.width, height: exitFrame.height), withAttributes: attrs)
+            
         case tools.startPosition:
             let exitFrame = frameTool
             NSColor.orangeColor().setStroke()
             
             NSBezierPath(rect: exitFrame).stroke()
-            let str = NSString(string:"START")
+            let str = NSString(string:"YOU")
             let attrs : [String : AnyObject] = [
                 NSFontAttributeName: NSFont(name: "Courier", size: 12)!,
                 NSForegroundColorAttributeName: NSColor.whiteColor()
             ]
             str.drawInRect(NSRect(x: exitFrame.origin.x + 3, y: exitFrame.origin.y - 7, width: exitFrame.width, height: exitFrame.height), withAttributes: attrs)
+        
+        case tools.conditional:
+            NSColor.redColor().setStroke()
+            NSBezierPath(rect: frameTool).stroke()
+            let str = NSString(string:"<n")
+            let attrs = [
+                NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
+                NSForegroundColorAttributeName: NSColor.whiteColor()
+            ]
+            str.drawInRect(NSRect(x: frameTool.origin.x + 6, y: frameTool.origin.y - 7, width: frameTool.width, height: frameTool.height), withAttributes: attrs)
+        case tools.simple:
+            let sempliceFrame = frameTool
+            //Operazione Semplice
+            NSColor.greenColor().setStroke()
+            NSBezierPath(rect: sempliceFrame).stroke()
+            let str = NSString(string:"*n")
+            let attrs = [
+                NSFontAttributeName: NSFont(name: "Courier", size: 17)!,
+                NSForegroundColorAttributeName: NSColor.whiteColor()
+            ]
+            str.drawInRect(NSRect(x: sempliceFrame.origin.x + 6, y: sempliceFrame.origin.y - 7, width: sempliceFrame.width, height: sempliceFrame.height), withAttributes: attrs)
+        case tools.oneShot:
+            let oneShotFrame = frameTool
+            //Operazione oneshot
+            NSColor.blueColor().setStroke()
+            NSBezierPath(rect: oneShotFrame).stroke()
+            let str = NSString(string:"/n")
+            let attrs = [
+                NSFontAttributeName: NSFont(name: "Courier", size: 17)!,
+                NSForegroundColorAttributeName: NSColor.whiteColor()
+            ]
+            str.drawInRect(NSRect(x: oneShotFrame.origin.x + 6, y: oneShotFrame.origin.y - 7, width: oneShotFrame.width, height: oneShotFrame.height), withAttributes: attrs)
             
         default:
             break
@@ -133,7 +168,7 @@ class CustomLevel: NSView {
     
     func drawTool(){
         //Disegna i tool che seguono il mouse
-        let square = NSSize(width: self.gridSize, height: self.gridSize)
+        let square = NSSize(width: self.gridSize-10, height: self.gridSize-10)
         let frameTool = NSRect(origin: NSPoint(x: mousePosition.x-self.gridSize/2,
                                            y: mousePosition.y-self.gridSize/2), size: square)
         
@@ -176,7 +211,7 @@ class CustomLevel: NSView {
                 NSBezierPath(rect: exitFrame).stroke()
                 let str = NSString(string:"Exit")
                 let attrs : [String : AnyObject] = [
-                    NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
+                    NSFontAttributeName: NSFont(name: "Courier", size: 10)!,
                     NSForegroundColorAttributeName: NSColor.whiteColor()
                 ]
                 str.drawInRect(NSRect(x: exitFrame.origin.x + 4, y: exitFrame.origin.y - 7, width: exitFrame.width, height: exitFrame.height), withAttributes: attrs)
@@ -206,28 +241,18 @@ class CustomLevel: NSView {
             //Operazione oneshot
             NSColor.darkGrayColor().setFill()
             NSBezierPath(rect: frameTool).fill()
-            let str = NSString(string:"Wall")
-            let attrs = [
-                NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
-                NSForegroundColorAttributeName: NSColor.whiteColor()
-            ]
-            str.drawInRect(NSRect(x: frameTool.origin.x + 6, y: frameTool.origin.y - 7, width: frameTool.width, height: frameTool.height), withAttributes: attrs)
+            
         case tools.clear:
             //Operazione oneshot
-            NSColor.darkGrayColor().setFill()
+            NSColor.whiteColor().setFill()
             NSBezierPath(rect: frameTool).fill()
-            let str = NSString(string:"DEL")
-            let attrs = [
-                NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
-                NSForegroundColorAttributeName: NSColor.whiteColor()
-            ]
-            str.drawInRect(NSRect(x: frameTool.origin.x + 6, y: frameTool.origin.y - 7, width: frameTool.width, height: frameTool.height), withAttributes: attrs)
+            
         case tools.startPosition:
             let exitFrame = frameTool
             NSColor.orangeColor().setStroke()
             
             NSBezierPath(rect: exitFrame).stroke()
-            let str = NSString(string:"START")
+            let str = NSString(string:"YOU")
             let attrs : [String : AnyObject] = [
                 NSFontAttributeName: NSFont(name: "Courier", size: 12)!,
                 NSForegroundColorAttributeName: NSColor.whiteColor()
@@ -256,13 +281,18 @@ class CustomLevel: NSView {
         mouseDown = true
         mouseDownPt = self.convertPoint(theEvent.locationInWindow, fromView: nil)
         mousePosition = self.convertPoint(theEvent.locationInWindow, fromView: nil)
+        mtx.invert()
+        let pt2level = mtx.transformPoint(mouseUpPt)
+        mtx.invert()
+        let x = Int(floor(pt2level.x))/40
+        let y = Int(floor(pt2level.y))/40
+        if pt2level.x > 0 && pt2level.y > 0 && x < level.width && y < level.height {
+            
         switch selectedTool{
             case tools.pan:
                 ultimoPuntoTraslato = mouseDownPt
             case tools.editCell:
-                let pt2level = mtx.transformPoint(mouseDownPt)
-                Swift.print("Clicked on cell ", Int(pt2level.x/40), Int(pt2level.y/40))
-                if level.map[Int(pt2level.x/40)][Int(pt2level.y/40)].type != .null{
+                if level.map[x][y].type != .null{
                     let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                     let tv = TextViewEditCell(frame: tvFrame)
                     tv.selectable = true
@@ -279,7 +309,8 @@ class CustomLevel: NSView {
         if selectedTool != tools.pan{
             saveLevelInput?.textColor = NSColor.redColor()
         }
-        
+            
+        }
     }
     
     override func mouseDragged(theEvent: NSEvent) {
@@ -292,13 +323,25 @@ class CustomLevel: NSView {
         case tools.block:
             mtx.invert()
             let pt2level = mtx.transformPoint(mouseUpPt)
-            level.addCell(tools.block, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
+            let x = Int(floor(pt2level.x))/40
+            let y = Int(floor(pt2level.y))/40
+            if !(x < 0 || x > level.width - 1 || y < 0 || y > level.height - 1){
+                level.addCell(tools.block, x: x, y: y)
+            }
             mtx.invert()
         case tools.clear:
             mtx.invert()
             let pt2level = mtx.transformPoint(mouseUpPt)
-            level.addCell(tools.clear, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
             mtx.invert()
+            if pt2level.x > 0 && pt2level.y > 0{
+                let x = Int(floor(pt2level.x))/40
+                let y = Int(floor(pt2level.y))/40
+                if !(x > level.width - 1 || y > level.height - 1){
+                    level.addCell(tools.clear, x: Int(floor(pt2level.x))/40, y: Int(floor(pt2level.y))/40)
+                }
+            }
+            
+
         default:
             break
         }
@@ -314,12 +357,16 @@ class CustomLevel: NSView {
         mouseDown = false
         mousePosition = self.convertPoint(theEvent.locationInWindow, fromView: nil)
         mouseUpPt = self.convertPoint(theEvent.locationInWindow, fromView: nil)
+        mtx.invert()
+        let pt2level = mtx.transformPoint(mouseUpPt)
+        mtx.invert()
+        let x = Int(floor(pt2level.x))/40
+        let y = Int(floor(pt2level.y))/40
+        if pt2level.x > 0 && pt2level.y > 0 && x < level.width && y < level.height {
+        
         switch selectedTool{
             case tools.conditional:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.conditional, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.conditional, x: x, y: y)
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
@@ -328,26 +375,17 @@ class CustomLevel: NSView {
                 self.addSubview(tv)
                 tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
                 tv.level = self.level
+            
             case tools.exit:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.exit, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.exit, x: x, y: y)
+            
             case tools.block:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.block, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.block, x: x, y: y)
+            
             case tools.clear:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.clear, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.clear, x: x, y: y)
             case tools.oneShot:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.oneShot, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.oneShot, x: x, y: y)
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
@@ -356,11 +394,10 @@ class CustomLevel: NSView {
                 self.addSubview(tv)
                 tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
                 tv.level = self.level
+
             case tools.simple:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.simple, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.simple, x: x, y: y)
+                
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
@@ -369,11 +406,10 @@ class CustomLevel: NSView {
                 self.addSubview(tv)
                 tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
                 tv.level = self.level
+
             case tools.startPosition:
-                mtx.invert()
-                let pt2level = mtx.transformPoint(mouseUpPt)
-                level.addCell(tools.startPosition, x: Int(pt2level.x)/40, y: Int(pt2level.y)/40)
-                mtx.invert()
+                level.addCell(tools.startPosition, x: x, y: y)
+            
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
@@ -384,6 +420,7 @@ class CustomLevel: NSView {
                 tv.level = self.level
             default:
                 break
+        }
         }
     }
 

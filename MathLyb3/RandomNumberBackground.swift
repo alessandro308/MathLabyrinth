@@ -23,6 +23,7 @@ class RandomNumberBackground: NSView {
     ]
     
     override func awakeFromNib() {
+        NSTimer.scheduledTimerWithTimeInterval(0.04, target: self, selector: "updateNumbers", userInfo: nil, repeats: true)
         previousFrame = self.frame
         for s in (0...5){
             chars.append(NSString(string: String(arc4random()) + String(arc4random()) + String(arc4random()) + String(arc4random()) ))
@@ -112,7 +113,6 @@ class RandomNumberBackground: NSView {
     
     override func keyDown(theEvent: NSEvent) {
         if(theEvent.keyCode == 53){
-            Swift.print(selectedLevel)
             NSApplication.sharedApplication().terminate(self)
         }
     }

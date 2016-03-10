@@ -48,6 +48,7 @@ class LevelScrollController: MySheetView {
 
     var scrollView: NSScrollView! = nil
     var scrolledView : NSView! = nil
+    
     override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return true
     }
@@ -103,14 +104,12 @@ class LevelScrollController: MySheetView {
     }
     
     func updateFrame(frame: NSRect){
-        
+
     }
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        
         scrollView.drawRect(dirtyRect)
         NSColor.blackColor().setFill()
-        
     }
     
     override func keyDown(theEvent: NSEvent) {

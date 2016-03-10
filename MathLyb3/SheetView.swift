@@ -66,9 +66,6 @@ class MySheetView: NSView {
             timer = nil
             self.removeFromSuperview()
         }
-        if(selectedLevel != nil){
-            self.window?.contentViewController = PlayGame()
-        }
     }
     
     func openFrameAnimation(){

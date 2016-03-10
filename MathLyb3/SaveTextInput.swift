@@ -36,8 +36,9 @@ class SaveTextInput: NSTextField {
     override func textDidEndEditing(obj: NSNotification) {
         super.textDidEndEditing(obj)
         if(textColor != NSColor.greenColor()){
-            level!.saveOnFile(self.stringValue)
-            self.textColor = NSColor.greenColor()
+            if(level!.saveOnFile(self.stringValue)){
+                self.textColor = NSColor.greenColor()
+            }
         }
     }
 }

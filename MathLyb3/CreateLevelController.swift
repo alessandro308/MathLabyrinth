@@ -10,7 +10,6 @@ import Cocoa
 
 class closeEditLevel: NSView{
     
-    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         let pt = NSBezierPath()
@@ -27,6 +26,7 @@ class closeEditLevel: NSView{
         let cont = self.superview as! MySheetView
         cont.dismissView()
     }
+
 }
 
 class CreateLevelController: MySheetView {

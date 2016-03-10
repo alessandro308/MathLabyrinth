@@ -65,9 +65,36 @@ class Toolbar: NSView {
         NSColor.darkGrayColor().setFill()
         NSBezierPath(rect: NSRect(origin: CGPoint.zero, size: self.frame.size)).fill()
         
+        //Evidenzia tools selezionato
+        NSColor.whiteColor().setFill()
+        switch selectedTool{
+        case .editCell:
+            NSBezierPath(rect:editCellFrame).fill()
+        case .clear:
+            NSBezierPath(rect: clearFrame).fill()
+        case .conditional:
+            NSBezierPath(rect: conditionalFrame).fill()
+        case .exit:
+            NSBezierPath(rect: exitFrame).fill()
+        case .oneShot:
+            NSBezierPath(rect: oneShotFrame).fill()
+        case .pan:
+            NSBezierPath(rect: panFrame).fill()
+        case .block:
+            NSBezierPath(rect: blockFrame).fill()
+        case .simple:
+            NSBezierPath(rect: sempliceFrame).fill()
+        case .startPosition:
+            NSBezierPath(rect: startPositionFrame).fill()
+        default:
+            break
+        }
+        
+        //Inizia a disegnare i tools vari
+        
         //EditCell
         NSColor.grayColor().setStroke()
-        
+
         NSBezierPath(rect: editCellFrame).stroke()
         var str = NSString(string:"Edit")
         var attrs : [String : AnyObject] = [
@@ -122,8 +149,8 @@ class Toolbar: NSView {
         str.drawInRect(NSRect(x: panFrame.origin.x + 2, y: panFrame.origin.y - 7, width: panFrame.width, height: panFrame.height), withAttributes: attrs)
         
         //BLOCK
-        NSColor.grayColor().setFill()
-        NSBezierPath(rect: blockFrame).fill()
+        NSColor.grayColor().setStroke()
+        NSBezierPath(rect: blockFrame).stroke()
         str = NSString(string:"Wall")
         attrs = [
             NSFontAttributeName: NSFont(name: "Courier", size: 9)!
@@ -131,8 +158,8 @@ class Toolbar: NSView {
         str.drawInRect(NSRect(x: blockFrame.origin.x + 2, y: blockFrame.origin.y - 7, width: blockFrame.width, height: blockFrame.height), withAttributes: attrs)
         
         //CLEAR
-        NSColor(hex:0x4C3100).setFill()
-        NSBezierPath(rect: clearFrame).fill()
+        NSColor(hex:0x4C3100).setStroke()
+        NSBezierPath(rect: clearFrame).stroke()
         str = NSString(string:"Del")
         attrs = [
             NSFontAttributeName: NSFont(name: "Courier", size: 9)!
@@ -148,6 +175,7 @@ class Toolbar: NSView {
             NSFontAttributeName: NSFont(name: "Courier", size: 9)!
         ]
         str.drawInRect(NSRect(x: startPositionFrame.origin.x+1, y: startPositionFrame.origin.y - 7, width: startPositionFrame.width-4, height: startPositionFrame.height+6), withAttributes: attrs)
+        
     }
     
     override func setFrameSize(newSize: NSSize) {

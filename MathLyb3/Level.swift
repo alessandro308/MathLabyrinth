@@ -9,6 +9,56 @@
 import Foundation
 import Cocoa
 
+enum coord{
+    case N
+    case E
+    case W
+    case S
+}
+
+class Parser{
+    
+    static func evalBool(n:String, x: String)->Bool{
+        switch x[0]{
+            case "=":
+                return Int(n) == Int((x as NSString).substringFromIndex(1))
+            case "<":
+                return Int(n) < Int((x as NSString).substringFromIndex(1))
+            case ">":
+                return Int(n) > Int((x as NSString).substringFromIndex(1))
+            default:
+                return false
+        }
+    }
+    
+    static func evalArith(y:String, x: String)->String{
+        let m = (x as NSString)
+        let n = Int(y)
+        if x.hasPrefix("+"){
+            return String(n!+Int(m.substringFromIndex(1))!)
+        }
+        else if x.hasPrefix("-"){
+            return String(n!-Int(m.substringFromIndex(1))!)
+        }
+        else if x.hasPrefix("**"){
+            return String(n!^^Int(m.substringFromIndex(1))!)
+        }
+        else if x.hasPrefix("/") || x.hasPrefix(":"){
+            return String(n!/Int(m.substringFromIndex(1))!)
+        }
+        else if x.hasPrefix("%"){
+            return String(n!%Int(m.substringFromIndex(1))!)
+        }
+        else if x.hasPrefix("*"){
+            return String(n!*Int(m.substringFromIndex(1))!)
+        }
+        else{
+            return "0";
+        }
+    }
+    
+}
+
 class Cell{
     
     var value : String = ""
@@ -41,6 +91,9 @@ class Level {
     var number : Int = 0
     var name : String? = nil
     var map : [[Cell]] = []
+    var restartMap : [[Cell]] = []
+    
+    var youPosition : (x: Int, y: Int) = (0,0)
     
     init(width : CGFloat = 0, height : CGFloat = 0){
         for(var j : CGFloat = 0; j<width; j++){
@@ -63,6 +116,7 @@ class Level {
         height = Int(n[1])! - Int(n[3])! + 1
         for(var i = 0; i<width; i++){
             map.append([])
+            restartMap.append([])
         }
         for(var i = height-1; i>=0; i--){
             let column = a[i+2].componentsSeparatedByString(" ")
@@ -71,20 +125,46 @@ class Level {
                 switch cellstr[0]{
                     case "B":
                         map[j].append(Cell(type: tools.block))
+                        restartMap[j].append(Cell(type: tools.block))
                     case "I":
                         map[j].append(Cell(type: tools.startPosition, value: (cellstr as NSString).substringFromIndex(1)))
+                        restartMap[j].append(Cell(type: tools.startPosition, value: (cellstr as NSString).substringFromIndex(1)))
                     case "N":
                         map[j].append(Cell())
+                        restartMap[j].append(Cell())
                     case "S":
                         map[j].append(Cell(type: tools.simple, value: (cellstr as NSString).substringFromIndex(1)))
+                        restartMap[j].append(Cell(type: tools.simple, value: (cellstr as NSString).substringFromIndex(1)))
                     case "O":
                         map[j].append(Cell(type: tools.oneShot, value: (cellstr as NSString).substringFromIndex(1)))
+                        restartMap[j].append(Cell(type: tools.oneShot, value: (cellstr as NSString).substringFromIndex(1)))
                     case "E":
                         map[j].append(Cell(type: tools.exit))
+                        restartMap[j].append(Cell(type: tools.exit))
                     case "C":
                         map[j].append(Cell(type: tools.conditional, value: (cellstr as NSString).substringFromIndex(1)))
+                        restartMap[j].append(Cell(type: tools.conditional, value: (cellstr as NSString).substringFromIndex(1)))
                     default:
                         map[j].append(Cell())
+                        restartMap[j].append(Cell())
+                }
+            }
+        }
+        for(var i = 0; i<width; i++){
+            for(var j = 0; j < height; j++){
+                if map[i][j].type == tools.startPosition{
+                    youPosition = (i, j)
+                }
+            }
+        }
+    }
+    
+    func restart(){
+        for(var i=0; i<width; i++){
+            for(var j=0; j<height; j++){
+                map[i][j] = Cell(type: restartMap[i][j].type, value: restartMap[i][j].value)
+                if restartMap[i][j].type == tools.startPosition{
+                    youPosition = (i, j)
                 }
             }
         }
@@ -133,7 +213,8 @@ class Level {
     
     func draw(editMode:Bool = false){
         NSColor.whiteColor().setStroke()
-        if(editMode){
+        
+        if(editMode){ //Draw grid
             for(var i = 0; i <= width; i++){
                 let bz = NSBezierPath()
                 bz.moveToPoint(NSPoint(x: i*40, y: 0))
@@ -147,6 +228,7 @@ class Level {
                 bz.stroke()
             }
         }
+        
         let attrs = [
             NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
             NSForegroundColorAttributeName: NSColor.whiteColor()
@@ -170,14 +252,14 @@ class Level {
                         NSColor(hex: 0xcccc00, alpha: 0.9).setFill()
                         NSBezierPath(rect: fr).fill()
                         str.drawInRect(strfr, withAttributes: attrs)
-                case tools.startPosition:
-                    let str = NSString(string: String(map[i][j].value))
-                    let fontsize = str.sizeWithAttributes(attrs)
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
-                    let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
-                    NSColor(hex: 0xFFA500, alpha: 0.9).setFill()
-                    NSBezierPath(rect: fr).fill()
-                    str.drawInRect(strfr, withAttributes: attrs)
+                    case tools.startPosition:
+                        let str = NSString(string: String(map[i][j].value))
+                        let fontsize = str.sizeWithAttributes(attrs)
+                        let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                        let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                        NSColor(hex: 0xFFA500, alpha: 0.9).setFill()
+                        NSBezierPath(rect: fr).fill()
+                        str.drawInRect(strfr, withAttributes: attrs)
                     
                     case tools.oneShot:
                         let str = NSString(string: String(map[i][j].value))
@@ -225,13 +307,10 @@ class Level {
         return true
     }
     
-    func saveOnFile(name1: String){
-        if name1.isEmpty {
-            self.name = "Default Name"
-        }
-        else{
+    func saveOnFile(name1: String) -> Bool{
+        if !name1.isEmpty {
             self.name = name1
-        }
+       
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             //Analisi dimensionale
@@ -318,6 +397,117 @@ class Level {
             
             levels.addObject(self.name!)
         }
+            return true;
+        }
+        return false;
     }
+    
+    func shake(x: coord){
+        /*
+            0
+        3       1
+            2
+        */
+        Swift.print("MURO")
+    }
+    
+    
+    /*
+    ^Y
+    |
+    |
+    | MAP INDEX
+    |______> X
+    
+    */
+    
+    func move(newCell:(x: Int, y: Int), from: coord){
+        let myValue = map[youPosition.x][youPosition.y].value
+        if(newCell.y == height || newCell.y == -1 || newCell.x == -1 || newCell.x == width){ //Se sono all'ultima riga
+            shake(from)
+        }
+        else{
+            switch map[newCell.x][newCell.y].type{
+            case tools.block:
+                shake(from)
+            case tools.conditional:
+                if( Parser.evalBool(myValue, x: (map[newCell.x][newCell.y]).value) ){
+                    switch from{
+                        case .N:
+                            map[newCell.x][newCell.y-1] = map[youPosition.x][youPosition.y]
+                            map[youPosition.x][youPosition.y] = Cell()
+                            youPosition = (newCell.x, newCell.y-1)
+                        case .S:
+                            map[newCell.x][newCell.y+1] = map[youPosition.x][youPosition.y]
+                            map[youPosition.x][youPosition.y] = Cell()
+                            youPosition = (newCell.x, newCell.y+1)
+                        case .W:
+                            map[newCell.x+1][newCell.y] = map[youPosition.x][youPosition.y]
+                            map[youPosition.x][youPosition.y] = Cell()
+                            youPosition = (newCell.x+1, newCell.y)
+                        case .E:
+                            map[newCell.x-1][newCell.y] = map[youPosition.x][youPosition.y]
+                            map[youPosition.x][youPosition.y] = Cell()
+                            youPosition = (newCell.x-1, newCell.y)
+                    }
+                    
+                }
+                else{
+                    shake(from)
+                }
+                
+            case tools.exit:
+                break
+            case tools.simple:
+                let newCellValue = map[newCell.x][newCell.y].value
+                let res = Parser.evalArith(myValue, x: newCellValue)
+                
+                map[newCell.x][newCell.y] = map[youPosition.x][youPosition.y]
+                map[newCell.x][newCell.y].value = res
+                
+                map[youPosition.x][youPosition.y] = Cell()
+                
+                youPosition = newCell
+                shake(from)
+                
+            case tools.oneShot:
+                let newCellValue = map[newCell.x][newCell.y].value
+                let res = Parser.evalArith(myValue, x: newCellValue)
+                
+                map[youPosition.x][youPosition.y].value = res
+                //New position non viene aggiornato volutamente
+                shake(from)
+                
+            case tools.null:
+                map[newCell.x][newCell.y] = map[youPosition.x][youPosition.y]
+                map[youPosition.x][youPosition.y] = Cell()
+                
+                youPosition = newCell
+            default:
+                break
+            }
+        }
 
+    }
+    
+    
+    func moveUp(){
+        let newCell = (x: youPosition.x, y: youPosition.y+1)
+        move(newCell, from: coord.S)
+    }
+    
+    func moveRight(){
+        let newCell = (x: youPosition.x+1, y: youPosition.y)
+        move(newCell, from: coord.W)
+    }
+    
+    func moveDown(){
+        let newCell = (x: youPosition.x, y: youPosition.y-1)
+        move(newCell, from: coord.N)
+    }
+    
+    func moveLeft(){
+        let newCell = (x: youPosition.x-1, y: youPosition.y)
+        move(newCell, from: coord.E)
+    }
 }

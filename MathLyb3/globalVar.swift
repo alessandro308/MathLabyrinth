@@ -22,6 +22,10 @@ func ^^ (radix: CGFloat, power: CGFloat) -> CGFloat {
     return CGFloat(pow(Double(radix), Double(power)))
 }
 
+func ^^ (radix: Int, power: Int) -> Int {
+    return Int(pow(Double(radix), Double(power)))
+}
+
 extension Int
 {
     static func random(range: Range<Int> ) -> Int

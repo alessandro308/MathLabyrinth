@@ -30,7 +30,8 @@ class blackBackground: NSView {
         pt1.stroke()
     }
     
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseUp(theEvent: NSEvent) {
         
     }
+    
 }

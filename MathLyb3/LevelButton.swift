@@ -7,17 +7,17 @@
 //
 
 import Cocoa
-let scrollVel = CGFloat(1)
+let scrollVel = CGFloat(2)
 
 class ScrolledString: NSView{
     var text: NSString;
     override var acceptsFirstResponder:Bool{ get {return true} }
-    var timer = NSTimer();
+    var timer : NSTimer? = nil
     var goLeft = true
     
     var offset:CGFloat = 0
     let attrs : [String: AnyObject] = [
-        NSFontAttributeName: NSFont(name: "Helvetica", size: 40.0)!,
+        NSFontAttributeName: NSFont(name: "Courier", size: 40.0)!,
         NSForegroundColorAttributeName: NSColor.whiteColor()
     ]
     
@@ -67,7 +67,7 @@ class ScrolledString: NSView{
         //Swift.print("mouseExit")
         self.offset = 0
         self.needsDisplay = true
-        timer.invalidate()
+        timer!.invalidate()
     }
 
 }
@@ -103,7 +103,7 @@ class LevelButton: NSView {
     }
 
     override func drawRect(dirtyRect: NSRect) {
-        let font = NSFont(name: "Helvetica", size: 40.0)
+        let font = NSFont(name: "Courier", size: 40.0)
         bgColor.setFill() //Azzurrino
         NSColor.blackColor().setStroke()
         let path = NSBezierPath(rect: myRect)
@@ -139,7 +139,7 @@ class LevelButton: NSView {
         sv.dismissView()
         
         //self.window?.styleMask = NSFullScreenWindowMask
-        self.window?.setFrame((NSScreen.mainScreen()?.frame)!, display: true, animate: true)
+        //self.window?.setFrame((NSScreen.mainScreen()?.frame)!, display: true, animate: true)
         
         //Count Level
         let home = NSHomeDirectory()
@@ -148,5 +148,9 @@ class LevelButton: NSView {
         let x = try? NSString(contentsOfFile: dataPath+"/"+String(self.number)+".level", encoding: NSUTF8StringEncoding)
         
         selectedLevel = Level(str: x!)
+        
+        let g = Game()
+        self.window?.setFrame(g.view.frame, display: true, animate: true)
+        self.window?.contentViewController = g
     }
 }
