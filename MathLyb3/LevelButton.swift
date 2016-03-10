@@ -105,11 +105,8 @@ class LevelButton: NSView {
     }
 
     override func drawRect(dirtyRect: NSRect) {
-<<<<<<< HEAD
         let font = NSFont(name: "CODE Light", size: 40.0)
-=======
-        let font = NSFont(name: fontName, size: 40.0)
->>>>>>> origin/master
+
         bgColor.setFill() //Azzurrino
         NSColor.blackColor().setStroke()
         let path = NSBezierPath(rect: myRect)
