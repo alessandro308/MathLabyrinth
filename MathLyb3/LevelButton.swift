@@ -8,7 +8,7 @@
 
 import Cocoa
 let scrollVel = CGFloat(2)
-
+let fontName = "CODE Light"
 class ScrolledString: NSView{
     var text: NSString;
     override var acceptsFirstResponder:Bool{ get {return true} }
@@ -17,7 +17,9 @@ class ScrolledString: NSView{
     
     var offset:CGFloat = 0
     let attrs : [String: AnyObject] = [
+
         NSFontAttributeName: NSFont(name: "CODE Light", size: 40.0)!,
+
         NSForegroundColorAttributeName: NSColor.whiteColor()
     ]
     
@@ -103,7 +105,11 @@ class LevelButton: NSView {
     }
 
     override func drawRect(dirtyRect: NSRect) {
+<<<<<<< HEAD
         let font = NSFont(name: "CODE Light", size: 40.0)
+=======
+        let font = NSFont(name: fontName, size: 40.0)
+>>>>>>> origin/master
         bgColor.setFill() //Azzurrino
         NSColor.blackColor().setStroke()
         let path = NSBezierPath(rect: myRect)

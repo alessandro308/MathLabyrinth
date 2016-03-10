@@ -99,6 +99,9 @@ class Level {
     var map : [[Cell]] = []
     var restartMap : [[Cell]] = []
     
+    var topsx : (x: Int,y: Int) = (0,0)
+    var bottomdx : (x: Int,y: Int) = (0,0)
+    
     var youPosition : (x: Int, y: Int) = (0,0)
     
     init(width : CGFloat = 0, height : CGFloat = 0){
@@ -111,6 +114,8 @@ class Level {
         }
         self.width = Int(width)
         self.height = Int(height)
+        self.topsx = (x: Int(width-1), y:0)
+        self.bottomdx = (x: 0, y: Int(height-1))
         self.number = totalLevel + 1
     }
     
@@ -177,6 +182,8 @@ class Level {
     }
     
     func addCell(t : tools, x:Int, y:Int){
+        
+        Swift.print(topsx, bottomdx)
         switch t{
             case tools.conditional:
                 map[x][y] = Cell(type: tools.conditional)
@@ -211,6 +218,29 @@ class Level {
         default:
             break
         }
+        
+        if(t != tools.clear){
+            if(x<topsx.x){ topsx.x = x }
+            if(x>bottomdx.x) { bottomdx.x = x}
+            if(y>topsx.y){ topsx.y = y }
+            if(y<bottomdx.y) { bottomdx.y = y }
+        }
+        else{
+            //Controlla se non si è ristretto il livello
+            while self.columnIsNull(topsx.x) {
+                topsx.x++
+            }
+            while self.columnIsNull(bottomdx.x) {
+                bottomdx.x--
+            }
+            
+            while self.rowIsNull(topsx.y) {
+                topsx.y--
+            }
+            while self.rowIsNull(bottomdx.y) {
+                bottomdx.y++
+            }
+        }
     }
     
     func editCell(x:Int, y: Int, value:String){
@@ -233,6 +263,12 @@ class Level {
                 bz.lineToPoint(NSPoint(x: self.width*40, y: i*40))
                 bz.stroke()
             }
+            
+            NSColor.orangeColor().setStroke()
+            let p = NSBezierPath(rect: NSRect(x: topsx.x*40, y: bottomdx.y*40, width: (bottomdx.x-topsx.x+1)*40, height: (topsx.y - bottomdx.y+1)*40))
+            p.setLineDash([5.0, 5.0] , count: 2, phase: 0)
+            p.lineWidth = 5
+            p.stroke()
         }
         
         let attrs = [
@@ -323,45 +359,11 @@ class Level {
             //(0,0) = in basso a sx
             //(width, height) = in alto a destra
             //Map è salvata per [colonna][riga]
-            var topsx : (x: Int,y: Int) = (0,self.height)
-            var bottomdx : (x: Int,y: Int) = (self.width,0)
-            //Conta le colonne vuote prima
-            for(var i=0; i<self.width; i++){
-                if self.columnIsNull(i) {
-                    topsx.x++
-                } else{ break }
-            }
-            //Conta le colonne vuote dopo
-            for(var i=self.width-1; i != 0; i--){
-                if self.columnIsNull(i) {
-                    bottomdx.x--
-                } else { bottomdx.x--; break }
-            }
-            //Conta le righe vuote sotto
-            for(var i=0; i<self.height; i++){
-                if self.rowIsNull(i) {
-                    bottomdx.y++
-                }
-                else{
-                    break
-                }
-            }
-            
-            //Conta le righe vuote s
-            for(var i=self.height-1; i != 0; i--){
-                if self.rowIsNull(i) {
-                    topsx.y--
-                }
-                else{
-                    topsx.y--
-                    break
-                }
-            }
-            
+
             var str = self.name!
-            str += "\n"+String(topsx.x)+" "+String(topsx.y) + " "+String(bottomdx.x)+" "+String(bottomdx.y)+"\n"
-            for(var j = topsx.y; j>=bottomdx.y; j--){
-                for(var i = topsx.x; i<=bottomdx.x; i++){
+            str += "\n"+String(self.topsx.x)+" "+String(self.topsx.y) + " "+String(self.bottomdx.x)+" "+String(self.bottomdx.y)+"\n"
+            for(var j = self.topsx.y; j>=self.bottomdx.y; j--){
+                for(var i = self.topsx.x; i<=self.bottomdx.x; i++){
                     switch self.map[i][j].type{
                     case .null:
                         str += "N"+" "

@@ -346,6 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
+<<<<<<< HEAD
             timestampString = "479330767.513121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -353,6 +354,15 @@
             endingLineNumber = "245"
             landmarkName = "draw(_:)"
             landmarkType = "5">
+=======
+            timestampString = "479312906.798647"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "Level"
+            landmarkType = "3">
+>>>>>>> origin/master
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,11 +372,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
+<<<<<<< HEAD
             timestampString = "479330767.513121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "353"
             endingLineNumber = "353"
+=======
+            timestampString = "479313026.49854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+>>>>>>> origin/master
             landmarkName = "saveOnFile(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,11 +492,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
+<<<<<<< HEAD
             timestampString = "479330767.513121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
+=======
+            timestampString = "479310333.24187"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+>>>>>>> origin/master
             landmarkName = "init(str:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +532,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
+<<<<<<< HEAD
             timestampString = "479330767.513121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "415"
             endingLineNumber = "415"
+=======
+            timestampString = "479313026.49854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+>>>>>>> origin/master
             landmarkName = "shake(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,12 +556,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
+<<<<<<< HEAD
             timestampString = "479330767.513121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "515"
             endingLineNumber = "515"
             landmarkName = "moveDown()"
+=======
+            timestampString = "479313026.49854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "moveRight()"
+>>>>>>> origin/master
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -538,12 +581,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathLyb3/Level.swift"
+<<<<<<< HEAD
             timestampString = "479330767.513121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
             landmarkName = "restart()"
+=======
+            timestampString = "479310333.24187"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "init(str:)"
+>>>>>>> origin/master
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
