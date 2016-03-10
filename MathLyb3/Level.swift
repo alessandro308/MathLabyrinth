@@ -114,8 +114,8 @@ class Level {
         }
         self.width = Int(width)
         self.height = Int(height)
-        self.topsx = (x: Int(width-1), y:0)
-        self.bottomdx = (x: 0, y: Int(height-1))
+        self.bottomdx = (x: 0, y:Int(height-1))
+        self.topsx = (x: Int(width-1), y: 0)
         self.number = totalLevel + 1
     }
     
@@ -169,7 +169,7 @@ class Level {
             }
         }
     }
-    
+
     func restart(){
         for(var i=0; i<width; i++){
             for(var j=0; j<height; j++){
@@ -227,17 +227,17 @@ class Level {
         }
         else{
             //Controlla se non si è ristretto il livello
-            while self.columnIsNull(topsx.x) {
+            while topsx.x < self.width && self.columnIsNull(topsx.x) {
                 topsx.x++
             }
-            while self.columnIsNull(bottomdx.x) {
+            while bottomdx.x >= 0 && self.columnIsNull(bottomdx.x) {
                 bottomdx.x--
             }
             
-            while self.rowIsNull(topsx.y) {
+            while topsx.y >= 0 && self.rowIsNull(topsx.y) {
                 topsx.y--
             }
-            while self.rowIsNull(bottomdx.y) {
+            while bottomdx.y < self.height && self.rowIsNull(bottomdx.y) {
                 bottomdx.y++
             }
         }
@@ -269,6 +269,9 @@ class Level {
             p.setLineDash([5.0, 5.0] , count: 2, phase: 0)
             p.lineWidth = 5
             p.stroke()
+        }
+        else{
+            // TO DO: Draw background 
         }
         
         let attrs = [
@@ -399,6 +402,7 @@ class Level {
             
             do{
                 try str.writeToFile(dataPath.stringByAppendingString("/"+String(self.number)+".level"), atomically: true, encoding: NSUTF8StringEncoding)
+                levelsFile.setValue(String(self.number)+".level", forKey:  self.name!)
             } catch let e as NSError{
                 Swift.print(e)
             }
