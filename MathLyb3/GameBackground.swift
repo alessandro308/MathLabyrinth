@@ -15,7 +15,7 @@ class GameBackground: NSView {
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         NSColor.orangeColor().setFill()
-        NSBezierPath(rect: NSRect(origin: CGPoint.zero, size: self.frame.size)).fill()
+        NSBezierPath(rect: NSRect(origin: CGPoint.zero, size: NSSize(width: 100, height: 1000))).fill()
         // Drawing code here.
     }
     

@@ -33,7 +33,7 @@ class CreateLevelController: MySheetView {
 
     var canvas:CustomLevel? = nil;
     var toolbar: Toolbar? = nil;
-    let toolbarWidth:CGFloat = 40
+    let toolbarWidth:CGFloat = 60
     var btn : closeEditLevel? = nil;
     
     override init(frame frameRect: NSRect) {

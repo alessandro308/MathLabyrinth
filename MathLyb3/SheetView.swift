@@ -15,7 +15,7 @@ class MySheetView: NSView {
     var finalFrame:NSRect = NSRect.zero;
     var mouseEventMonitor : AnyObject! = nil
     var clickOutOfBound: Bool = false
-    var delta = CGFloat(10)
+    var delta = CGFloat(4)
     var outClickClose: Bool = true
     
     override init(frame frameRect: NSRect) {

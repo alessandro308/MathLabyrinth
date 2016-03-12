@@ -31,7 +31,7 @@ class MainViewController: NSViewController {
         scr = LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
             y: f.size.height - 235 ,
             width: f.size.width*4 / 6  ,
-            height: 235))
+            height: 270))
         
         scr!.becomeFirstResponder()
         

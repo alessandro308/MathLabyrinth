@@ -31,7 +31,7 @@ class ScrolledString: NSView{
     }
 
     required init?(coder: NSCoder) {
-        self.text = NSString(string: "ciao")
+        self.text = NSString(string: "Not implemented")
         super.init(coder:coder)
     }
     
@@ -149,13 +149,23 @@ class LevelButton: NSView {
         let dataPath = home.stringByAppendingString("/MathLabyrinth")
         
         let fileNumber = levelsFile[self.name as String] as! String
-        Swift.print(fileNumber)
         let x = try? NSString(contentsOfFile: dataPath+"/"+fileNumber, encoding: NSUTF8StringEncoding)
         
         selectedLevel = Level(str: x!)
         
-        let g = Game()
-        self.window?.setFrame(g.view.frame, display: true, animate: true)
+        
+        
+        let ws = NSScreen.mainScreen()?.frame.size
+        let width : CGFloat = (ws?.width)!-100
+        let height : CGFloat = (ws?.height)!-100
+        
+        let frame = NSRect(origin: NSMakePoint(((ws?.width)!-width)/2, ((ws?.height)!-height)/2), size: CGSize(width:width, height:height))
+        
+        let g = GameViewController()
+        
         self.window?.contentViewController = g
+        self.window?.setFrame(frame, display: true, animate: true)
+        self.window?.makeFirstResponder(g)
+        //self.window?.styleMask = (self.window?.styleMask)! & NSResizableWindowMask
     }
 }

@@ -40,7 +40,7 @@ class Toolbar: NSView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         let offset = self.frame.width / 5
-        let square = NSSize(width: self.frame.width-offset, height: self.frame.width-offset)
+        let square = NSSize(width: self.frame.width-offset, height: self.frame.width/2-offset)
         let x = offset/2
         panFrame = NSRect(origin: NSMakePoint(x, self.frame.height - 7*(square.height + offset)), size: square)
         exitFrame = NSRect(origin: NSMakePoint(x, self.frame.height - 2*(square.height + offset)), size: square)
@@ -90,6 +90,7 @@ class Toolbar: NSView {
             break
         }
         
+        
         //Inizia a disegnare i tools vari
         
         //EditCell
@@ -98,9 +99,9 @@ class Toolbar: NSView {
         NSBezierPath(rect: editCellFrame).stroke()
         var str = NSString(string:"Edit")
         var attrs : [String : AnyObject] = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 11)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
-        str.drawInRect(NSRect(x: editCellFrame.origin.x + 4, y: editCellFrame.origin.y - 7, width: editCellFrame.width, height: editCellFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: editCellFrame.origin.x + 6, y: editCellFrame.origin.y, width: editCellFrame.width, height: editCellFrame.height), withAttributes: attrs)
         
         //Exit
         NSColor.yellowColor().setStroke()
@@ -108,16 +109,16 @@ class Toolbar: NSView {
         NSBezierPath(rect: exitFrame).stroke()
         str = NSString(string:"Exit")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 9)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 9)!
         ]
-        str.drawInRect(NSRect(x: exitFrame.origin.x+1, y: exitFrame.origin.y - 7, width: exitFrame.width-2, height: exitFrame.height+6), withAttributes: attrs)
+        str.drawInRect(NSRect(x: exitFrame.origin.x+3, y: exitFrame.origin.y - 7, width: exitFrame.width-2, height: exitFrame.height+3), withAttributes: attrs)
         
         //Operazione Semplice
         NSColor.greenColor().setStroke()
         NSBezierPath(rect: sempliceFrame).stroke()
         str = NSString(string:"*n")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 15)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
         str.drawInRect(NSRect(x: sempliceFrame.origin.x + 6, y: sempliceFrame.origin.y - 7, width: sempliceFrame.width, height: sempliceFrame.height), withAttributes: attrs)
         
@@ -126,7 +127,7 @@ class Toolbar: NSView {
         NSBezierPath(rect: oneShotFrame).stroke()
         str = NSString(string:"/n")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 15)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
         str.drawInRect(NSRect(x: oneShotFrame.origin.x + 6, y: oneShotFrame.origin.y - 7, width: oneShotFrame.width, height: oneShotFrame.height), withAttributes: attrs)
         
@@ -135,7 +136,7 @@ class Toolbar: NSView {
         NSBezierPath(rect: conditionalFrame).stroke()
         str = NSString(string:"<n")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 15)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
         str.drawInRect(NSRect(x: conditionalFrame.origin.x + 6, y: conditionalFrame.origin.y - 7, width: conditionalFrame.width, height: conditionalFrame.height), withAttributes: attrs)
         
@@ -144,7 +145,7 @@ class Toolbar: NSView {
         NSBezierPath(rect: panFrame).stroke()
         str = NSString(string:"PAN")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 15)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
         str.drawInRect(NSRect(x: panFrame.origin.x + 2, y: panFrame.origin.y - 7, width: panFrame.width, height: panFrame.height), withAttributes: attrs)
         
@@ -153,7 +154,7 @@ class Toolbar: NSView {
         NSBezierPath(rect: blockFrame).stroke()
         str = NSString(string:"Wall")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 9)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 9)!
         ]
         str.drawInRect(NSRect(x: blockFrame.origin.x + 2, y: blockFrame.origin.y - 7, width: blockFrame.width, height: blockFrame.height), withAttributes: attrs)
         
@@ -162,7 +163,7 @@ class Toolbar: NSView {
         NSBezierPath(rect: clearFrame).stroke()
         str = NSString(string:"Del")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 9)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 9)!
         ]
         str.drawInRect(NSRect(x: clearFrame.origin.x + 2, y: clearFrame.origin.y - 7, width: clearFrame.width, height: clearFrame.height), withAttributes: attrs)
         
@@ -172,16 +173,16 @@ class Toolbar: NSView {
         NSBezierPath(rect: self.startPositionFrame).stroke()
         str = NSString(string:"You")
         attrs = [
-            NSFontAttributeName: NSFont(name: "Courier", size: 9)!
+            NSFontAttributeName: NSFont(name: "CODE Bold", size: 9)!
         ]
-        str.drawInRect(NSRect(x: startPositionFrame.origin.x+1, y: startPositionFrame.origin.y - 7, width: startPositionFrame.width-4, height: startPositionFrame.height+6), withAttributes: attrs)
+        str.drawInRect(NSRect(x: startPositionFrame.origin.x+3, y: startPositionFrame.origin.y - 7, width: startPositionFrame.width-4, height: startPositionFrame.height+3), withAttributes: attrs)
         
     }
     
     override func setFrameSize(newSize: NSSize) {
         super.setFrameSize(newSize)
         let offset = self.frame.width / 5
-        let square = NSSize(width: self.frame.width-offset, height: self.frame.width-offset)
+        let square = NSSize(width: self.frame.width-offset, height: self.frame.width/2-offset)
         let x = offset/2
         
         panFrame = NSRect(origin: NSMakePoint(x, self.frame.height - 7*(square.height + offset)), size: square)
@@ -228,6 +229,7 @@ class Toolbar: NSView {
         else{
             selectedTool = tools.null
         }
+        self.needsDisplay = true
     }
     
 }

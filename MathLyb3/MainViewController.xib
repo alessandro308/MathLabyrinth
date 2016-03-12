@@ -20,11 +20,11 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="FTr-2a-qWY" customClass="RandomNumberBackground" customModule="MathLyb3" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="570" height="388"/>
                     <subviews>
-                        <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
+                        <customView canDrawConcurrently="YES" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
                             <rect key="frame" x="166" y="99" width="239" height="191"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32D-mj-xOU">
-                                    <rect key="frame" x="63" y="111" width="111" height="32"/>
+                                    <rect key="frame" x="63" y="111" width="112" height="32"/>
                                     <buttonCell key="cell" type="push" title="Crea Livello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ucx-xe-0FP">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>

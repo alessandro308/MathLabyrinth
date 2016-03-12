@@ -20,7 +20,7 @@ class CustomLevel: NSView {
     var mtx = NSAffineTransform()
     var ultimoPuntoTraslato = NSPoint.zero
     var levelPositionOriginPoint : NSPoint? = nil
-    let level = Level(width: 40, height: 30)
+    let level = Level(width: 19, height: 11)
     let mtxTools = NSAffineTransform()
     var saveLevelInput : SaveTextInput? = nil ;
     

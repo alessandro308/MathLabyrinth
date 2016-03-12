@@ -14,7 +14,13 @@ enum coord{
     case E
     case W
     case S
+    case X
 }
+
+// 0: Level Background
+// 1: Ombra oggetti
+// 2: Muro
+let colors = [NSColor.darkGrayColor(), NSColor(hex: 0x1E1E26), NSColor(calibratedWhite: 0.1, alpha: 0.95)]
 
 class Parser{
     
@@ -98,6 +104,8 @@ class Level {
     var name : String? = nil
     var map : [[Cell]] = []
     var restartMap : [[Cell]] = []
+    var view : NSView? = nil
+    var mainMatrix = NSAffineTransform()
     
     var topsx : (x: Int,y: Int) = (0,0)
     var bottomdx : (x: Int,y: Int) = (0,0)
@@ -168,6 +176,7 @@ class Level {
                 }
             }
         }
+    
     }
 
     func restart(){
@@ -179,11 +188,11 @@ class Level {
                 }
             }
         }
+        levelEnded = false
     }
     
     func addCell(t : tools, x:Int, y:Int){
         
-        Swift.print(topsx, bottomdx)
         switch t{
             case tools.conditional:
                 map[x][y] = Cell(type: tools.conditional)
@@ -271,13 +280,16 @@ class Level {
             p.stroke()
         }
         else{
-            // TO DO: Draw background 
+            //Draw Background
+            colors[0].setFill()
+            NSBezierPath(rect: NSRect(origin: CGPoint.zero, size: NSSize(width: self.width*40, height: self.height*40))).fill()
         }
         
         let attrs = [
             NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
             NSForegroundColorAttributeName: NSColor.whiteColor()
         ]
+        
         for(var i = 0; i < width; i++){
             for(var j = height-1; j>=0; j--){
                 switch map[i][j].type{
@@ -325,7 +337,7 @@ class Level {
                     
                     case tools.block:
                         let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
-                        NSColor.darkGrayColor().setFill()
+                        colors[2].setFill()
                         NSBezierPath(rect: fr).fill()
 
                     default:
@@ -333,6 +345,98 @@ class Level {
                 }
             }
         }
+    }
+    
+    func drawGame(){
+        mainMatrix.concat()
+        
+        //Draw Background
+        /*colors[0].setFill()
+        NSBezierPath(rect: NSRect(origin: CGPoint.zero, size: NSSize(width: self.width*40, height: self.height*40))).fill()*/
+        colors[1].setFill()
+        
+        let attrs = [
+            NSFontAttributeName: NSFont(name: "Courier", size: 15)!,
+            NSForegroundColorAttributeName: NSColor.whiteColor()
+        ]
+        
+        for(var i = 0; i < width; i++){
+            for(var j = height-1; j>=0; j--){
+                switch map[i][j].type{
+                case tools.conditional:
+                    let str = NSString(string: String(map[i][j].value))
+                    let fontsize = str.sizeWithAttributes(attrs)
+                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                    let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    NSColor(red: 1, green: 0, blue: 0, alpha: 0.9).setFill()
+                    NSBezierPath(rect: fr).fill()
+                    str.drawInRect(strfr, withAttributes: attrs)
+                case tools.exit:
+                    let str = "Exit"
+                    let fontsize = str.sizeWithAttributes(attrs)
+                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                    let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    NSColor(hex: 0xcccc00, alpha: 0.9).setFill()
+                    NSBezierPath(rect: fr).fill()
+                    str.drawInRect(strfr, withAttributes: attrs)
+                case tools.startPosition:
+                    let str = NSString(string: String(map[i][j].value))
+                    let fontsize = str.sizeWithAttributes(attrs)
+                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                    let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    NSColor(hex: 0xFFA500, alpha: 0.9).setFill()
+                    NSBezierPath(rect: fr).fill()
+                    str.drawInRect(strfr, withAttributes: attrs)
+                    
+                case tools.oneShot:
+                    let str = NSString(string: String(map[i][j].value))
+                    let fontsize = str.sizeWithAttributes(attrs)
+                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                    let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    NSColor(red: 0, green: 0, blue: 1, alpha: 0.9).setFill()
+                    NSBezierPath(rect: fr).fill()
+                    str.drawInRect(strfr, withAttributes: attrs)
+                case tools.simple:
+                    let str = NSString(string: String(map[i][j].value))
+                    let fontsize = str.sizeWithAttributes(attrs)
+                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                    let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    NSColor(hex: 0x2C6700, alpha: 0.9).setFill()
+                    NSBezierPath(rect: fr).fill()
+                    str.drawInRect(strfr, withAttributes: attrs)
+                case tools.block:
+                    break
+                default:
+                    NSColor.whiteColor().setStroke()
+                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
+                    /*if i == 0 || map[i-1][j].type == .block {
+                        let pt = NSBezierPath()
+                        pt.moveToPoint(fr.origin)
+                        pt.lineToPoint(NSPoint(x: fr.origin.x, y: fr.origin.y+40))
+                        pt.lineWidth = 2
+                        pt.stroke()
+                    }
+                    if i == width-1 || map[i+1][j].type == .block{
+                        let pt = NSBezierPath()
+                        pt.moveToPoint(NSMakePoint(fr.origin.x+40, fr.origin.y))
+                        pt.lineToPoint(NSPoint(x: fr.origin.x+40, y: fr.origin.y+40))
+                        pt.lineWidth = 2
+                        pt.stroke()
+                    }
+                    if j == 0 || map[i][j-1].type == .block{
+                        let pt = NSBezierPath()
+                        pt.moveToPoint(fr.origin)
+                        pt.lineToPoint(NSPoint(x: fr.origin.x, y: fr.origin.y+40))
+                        pt.lineWidth = 2
+                        pt.stroke()
+                    }*/
+                    
+                    colors[2].setFill()
+                    NSBezierPath(rect: fr).fill()
+                }
+            }
+        }
+        
     }
     
     func columnIsNull(i: Int) -> Bool{
@@ -420,9 +524,36 @@ class Level {
         3       1
             2
         */
-        Swift.print("MURO")
+        
+        let anim = CAKeyframeAnimation( keyPath:"transform" )
+        anim.values = [
+            NSValue( CATransform3D:CATransform3DMakeTranslation(-5, 0, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(0, -5, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(+5, 0, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(0, +5, 0 ) )
+        ]
+        anim.autoreverses = true
+        anim.repeatCount = 2
+        anim.duration = 7/100
+        
+        self.view?.layer!.addAnimation( anim, forKey:nil )
+        
     }
     
+    func littleShake(){
+        let anim = CAKeyframeAnimation( keyPath:"transform" )
+        anim.values = [
+            NSValue( CATransform3D:CATransform3DMakeTranslation(-1, 0, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(0, -1, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(+1, 0, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(0, +1, 0 ) )
+        ]
+        anim.autoreverses = true
+        anim.repeatCount = 2
+        anim.duration = 7/100
+        
+        self.view?.layer!.addAnimation( anim, forKey:nil )
+    }
     
     /*
     ^Y
@@ -432,12 +563,15 @@ class Level {
     |______> X
     
     */
+    var levelEnded = false
     
-    
-    func move(newCell:(x: Int, y: Int), from: coord){
+    func move(newCell:(x: Int, y: Int), from: coord) -> Bool{
+        if levelEnded {
+            return true;
+        }
         let myValue = map[youPosition.x][youPosition.y].value
         if abs(Int(myValue)!)>10000{
-            return;
+            return false;
         }
         if(newCell.y == height || newCell.y == -1 || newCell.x == -1 || newCell.x == width){ //Se sono all'ultima riga
             shake(from)
@@ -465,6 +599,8 @@ class Level {
                             map[newCell.x-1][newCell.y] = map[youPosition.x][youPosition.y]
                             map[youPosition.x][youPosition.y] = Cell()
                             youPosition = (newCell.x-1, newCell.y)
+                        default:
+                            break
                     }
                     
                 }
@@ -473,7 +609,12 @@ class Level {
                 }
                 
             case tools.exit:
-                break
+                map[newCell.x][newCell.y] = map[youPosition.x][youPosition.y]
+                map[youPosition.x][youPosition.y] = Cell(type: .null)
+                youPosition = newCell
+                levelEnded = true
+                return true;
+                
             case tools.simple:
                 let newCellValue = map[newCell.x][newCell.y].value
                 let res = Parser.evalArith(myValue, x: newCellValue)
@@ -484,7 +625,8 @@ class Level {
                 map[youPosition.x][youPosition.y] = Cell()
                 
                 youPosition = newCell
-                shake(from)
+                littleShake()
+                
                 
             case tools.oneShot:
                 let newCellValue = map[newCell.x][newCell.y].value
@@ -492,7 +634,7 @@ class Level {
                 
                 map[youPosition.x][youPosition.y].value = res
                 //New position non viene aggiornato volutamente
-                shake(from)
+                littleShake()
                 
             case tools.null:
                 map[newCell.x][newCell.y] = map[youPosition.x][youPosition.y]
@@ -503,27 +645,28 @@ class Level {
                 break
             }
         }
+        return false;
 
     }
     
     
-    func moveUp(){
+    func moveUp()->Bool{
         let newCell = (x: youPosition.x, y: youPosition.y+1)
-        move(newCell, from: coord.S)
+        return move(newCell, from: coord.S)
     }
     
-    func moveRight(){
+    func moveRight()->Bool{
         let newCell = (x: youPosition.x+1, y: youPosition.y)
-        move(newCell, from: coord.W)
+        return move(newCell, from: coord.W)
     }
     
-    func moveDown(){
+    func moveDown()->Bool{
         let newCell = (x: youPosition.x, y: youPosition.y-1)
-        move(newCell, from: coord.N)
+        return move(newCell, from: coord.N)
     }
     
-    func moveLeft(){
+    func moveLeft()->Bool{
         let newCell = (x: youPosition.x-1, y: youPosition.y)
-        move(newCell, from: coord.E)
+        return move(newCell, from: coord.E)
     }
 }

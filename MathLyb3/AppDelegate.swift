@@ -18,10 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let main = MainViewController()
         window.contentViewController = main
         window.acceptsMouseMovedEvents = true
-        window.styleMask = NSResizableWindowMask
+        self.window?.styleMask = ((self.window?.styleMask)! | NSBorderlessWindowMask | NSResizableWindowMask & ~NSFullScreenWindowMask)
         window.movableByWindowBackground = true
         
-            //Count Level
             let fileManager = NSFileManager.defaultManager()
             let home = NSHomeDirectory()
             let dataPath = home.stringByAppendingString("/MathLabyrinth")
