@@ -78,7 +78,14 @@ class TextViewEditCell: NSTextField {
         }
         else if(ce.type == tools.simple || ce.type == tools.oneShot){
             if self.stringValue[0] != ">" && self.stringValue[0] != "<" && self.stringValue[0] != "=" {
-                level!.editCell(Int(cella!.x), y: Int(cella!.y), value: (self.stringValue))
+                if self.stringValue.hasPrefix("*") || self.stringValue.hasPrefix("/") ||
+                    self.stringValue.hasPrefix("-") || self.stringValue.hasPrefix("%") ||
+                    self.stringValue.hasPrefix("+"){
+                        level!.editCell(Int(cella!.x), y: Int(cella!.y), value: (self.stringValue))
+                }
+                else{
+                    level!.editCell(Int(cella!.x), y: Int(cella!.y), value: "*"+(self.stringValue))
+                }
             }
         }
         if(ce.type == tools.startPosition){

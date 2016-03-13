@@ -23,7 +23,7 @@
                         <customView canDrawConcurrently="YES" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-pp-uwS" customClass="blackBackground" customModule="MathLyb3" customModuleProvider="target">
                             <rect key="frame" x="166" y="99" width="239" height="191"/>
                             <subviews>
-                                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32D-mj-xOU">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32D-mj-xOU">
                                     <rect key="frame" x="63" y="111" width="112" height="32"/>
                                     <buttonCell key="cell" type="push" title="Crea Livello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ucx-xe-0FP">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -33,7 +33,7 @@
                                         <action selector="newLevel:" target="-2" id="mc6-Gg-vHf"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-Oa-nS2">
                                     <rect key="frame" x="61" y="144" width="114" height="32"/>
                                     <buttonCell key="cell" type="push" title="Gioca" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qKC-pZ-PjU">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -43,7 +43,7 @@
                                         <action selector="btnLevelClicked:" target="-2" id="Ose-UH-nt7"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ji-o3-5qI">
+                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ji-o3-5qI">
                                     <rect key="frame" x="87" y="13" width="65" height="32"/>
                                     <buttonCell key="cell" type="push" title="Esci" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QKG-LD-fve">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -54,28 +54,19 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="9Ji-o3-5qI" firstAttribute="top" secondItem="32D-mj-xOU" secondAttribute="bottom" constant="77" id="U8V-FI-8gs"/>
-                                <constraint firstItem="32D-mj-xOU" firstAttribute="top" secondItem="XBe-Oa-nS2" secondAttribute="bottom" constant="12" symbolic="YES" id="chg-y1-2vG"/>
-                                <constraint firstItem="XBe-Oa-nS2" firstAttribute="centerX" secondItem="32D-mj-xOU" secondAttribute="centerX" id="oFI-ED-D1T"/>
-                            </constraints>
                         </customView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="FTr-2a-qWY" secondAttribute="centerX" id="qsQ-dq-TYj"/>
-                        <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerY" secondItem="FTr-2a-qWY" secondAttribute="centerY" id="uqR-yj-kUj"/>
+                        <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerX" secondItem="FTr-2a-qWY" secondAttribute="centerX" id="CDz-bi-O3w"/>
+                        <constraint firstItem="4Rr-pp-uwS" firstAttribute="centerY" secondItem="FTr-2a-qWY" secondAttribute="centerY" id="I3u-ly-0T7"/>
                     </constraints>
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="40U-DS-Mp9"/>
-                <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="A8b-bt-gLM"/>
-                <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="EyM-tD-OE7"/>
-                <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OPo-Yz-C8c"/>
-                <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WwR-sY-bOm"/>
-                <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="boB-sf-DOW"/>
-                <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="fTk-V5-Z5c"/>
-                <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="j1l-mg-Ydq"/>
+                <constraint firstItem="FTr-2a-qWY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6lG-Qn-6TG"/>
+                <constraint firstAttribute="trailing" secondItem="FTr-2a-qWY" secondAttribute="trailing" id="dSL-kS-LIv"/>
+                <constraint firstItem="FTr-2a-qWY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="gYt-Xc-InK"/>
+                <constraint firstAttribute="bottom" secondItem="FTr-2a-qWY" secondAttribute="bottom" id="yZh-9L-aKM"/>
             </constraints>
             <point key="canvasLocation" x="367" y="368"/>
         </customView>

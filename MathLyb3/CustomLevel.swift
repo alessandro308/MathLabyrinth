@@ -281,18 +281,19 @@ class CustomLevel: NSView {
         mouseDown = true
         mouseDownPt = self.convertPoint(theEvent.locationInWindow, fromView: nil)
         mousePosition = self.convertPoint(theEvent.locationInWindow, fromView: nil)
-        mtx.invert()
-        let pt2level = mtx.transformPoint(mouseUpPt)
-        mtx.invert()
             
         switch selectedTool{
             case tools.pan:
                 ultimoPuntoTraslato = mouseDownPt
             case tools.editCell:
+                mtx.invert()
+                let pt2level = mtx.transformPoint(mouseDownPt)
+                mtx.invert()
                 let x = Int(floor(pt2level.x))/40
                 let y = Int(floor(pt2level.y))/40
                 if pt2level.x > 0 && pt2level.y > 0 && x < level.width && y < level.height {
-                if level.map[x][y].type != .null{
+                    let t : tools = level.map[x][y].type
+                if t == tools.startPosition || t == tools.conditional || t==tools.oneShot || t==tools.simple{
                     let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                     let tv = TextViewEditCell(frame: tvFrame)
                     tv.selectable = true
@@ -301,7 +302,6 @@ class CustomLevel: NSView {
                     self.addSubview(tv)
                     tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
                     tv.level = self.level
-                    selectedTool = tools.null
                 }
                 }
             default:

@@ -546,7 +546,10 @@ class Level {
             NSValue( CATransform3D:CATransform3DMakeTranslation(-1, 0, 0 ) ),
             NSValue( CATransform3D:CATransform3DMakeTranslation(0, -1, 0 ) ),
             NSValue( CATransform3D:CATransform3DMakeTranslation(+1, 0, 0 ) ),
-            NSValue( CATransform3D:CATransform3DMakeTranslation(0, +1, 0 ) )
+            NSValue( CATransform3D:CATransform3DMakeTranslation(0, +1, 0 ) ),
+            NSValue( CATransform3D:CATransform3DMakeTranslation(0, +1, -200 ) ),
+             NSValue( CATransform3D:CATransform3DMakeTranslation(0, +1, +200 ) ),
+             NSValue( CATransform3D:CATransform3DMakeTranslation(0, +1, -200 ) )
         ]
         anim.autoreverses = true
         anim.repeatCount = 2

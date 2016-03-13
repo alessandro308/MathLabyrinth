@@ -120,7 +120,7 @@ class Toolbar: NSView {
         attrs = [
             NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
-        str.drawInRect(NSRect(x: sempliceFrame.origin.x + 6, y: sempliceFrame.origin.y - 7, width: sempliceFrame.width, height: sempliceFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: sempliceFrame.origin.x + 12, y: sempliceFrame.origin.y, width: sempliceFrame.width, height: sempliceFrame.height), withAttributes: attrs)
         
         //Operazione oneshot
         NSColor.blueColor().setStroke()
@@ -129,7 +129,7 @@ class Toolbar: NSView {
         attrs = [
             NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
-        str.drawInRect(NSRect(x: oneShotFrame.origin.x + 6, y: oneShotFrame.origin.y - 7, width: oneShotFrame.width, height: oneShotFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: oneShotFrame.origin.x + 12, y: oneShotFrame.origin.y, width: oneShotFrame.width, height: oneShotFrame.height), withAttributes: attrs)
         
         //Operazione Condizionale
         NSColor.redColor().setStroke()
@@ -138,7 +138,7 @@ class Toolbar: NSView {
         attrs = [
             NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
-        str.drawInRect(NSRect(x: conditionalFrame.origin.x + 6, y: conditionalFrame.origin.y - 7, width: conditionalFrame.width, height: conditionalFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: conditionalFrame.origin.x + 12, y: conditionalFrame.origin.y, width: conditionalFrame.width, height: conditionalFrame.height), withAttributes: attrs)
         
         //PAN
         NSColor.redColor().setStroke()
@@ -147,7 +147,7 @@ class Toolbar: NSView {
         attrs = [
             NSFontAttributeName: NSFont(name: "CODE Bold", size: 15)!
         ]
-        str.drawInRect(NSRect(x: panFrame.origin.x + 2, y: panFrame.origin.y - 7, width: panFrame.width, height: panFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: panFrame.origin.x + 10, y: panFrame.origin.y, width: panFrame.width, height: panFrame.height), withAttributes: attrs)
         
         //BLOCK
         NSColor.grayColor().setStroke()
@@ -156,7 +156,7 @@ class Toolbar: NSView {
         attrs = [
             NSFontAttributeName: NSFont(name: "CODE Bold", size: 9)!
         ]
-        str.drawInRect(NSRect(x: blockFrame.origin.x + 2, y: blockFrame.origin.y - 7, width: blockFrame.width, height: blockFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: blockFrame.origin.x + 2, y: blockFrame.origin.y, width: blockFrame.width, height: blockFrame.height-3), withAttributes: attrs)
         
         //CLEAR
         NSColor(hex:0x4C3100).setStroke()
@@ -165,7 +165,7 @@ class Toolbar: NSView {
         attrs = [
             NSFontAttributeName: NSFont(name: "CODE Bold", size: 9)!
         ]
-        str.drawInRect(NSRect(x: clearFrame.origin.x + 2, y: clearFrame.origin.y - 7, width: clearFrame.width, height: clearFrame.height), withAttributes: attrs)
+        str.drawInRect(NSRect(x: clearFrame.origin.x + 4, y: clearFrame.origin.y, width: clearFrame.width, height: clearFrame.height-3), withAttributes: attrs)
         
         //START
         NSColor.orangeColor().setStroke()
