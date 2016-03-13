@@ -17,7 +17,7 @@ class ScrollLevel: NSScrollView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        levelContainer = LevelView(frame: NSRect(origin: NSMakePoint(-self.frame.origin.x, -self.frame.origin.y), size: self.frame.size))
+        levelContainer = LevelView(frame: NSRect(origin: CGPoint.zero /*NSMakePoint(-self.frame.origin.x, -self.frame.origin.y)*/, size: self.frame.size))
         levelContainer?.scrollView = self
         
         self.documentView = levelContainer

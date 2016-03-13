@@ -29,7 +29,7 @@ class MainViewController: NSViewController {
         let f = self.view.frame
         composeLevelView = nil
         scr = LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
-            y: f.size.height - 235 ,
+            y: f.size.height - 270 ,
             width: f.size.width*4 / 6  ,
             height: 270))
         
