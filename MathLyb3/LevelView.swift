@@ -36,12 +36,12 @@ class LevelView: NSView {
         NSColor(calibratedWhite: 0, alpha: 0.4).setFill()
         let pt = NSBezierPath(rect: NSRect(x: 0, y: 0+offset, width: self.frame.size.width, height: self.frame.size.height-2*offset))
         pt.fill()
-        self.alphaValue = 1
-        NSColor(hex: 0xd6ecfa, alpha: 1).setStroke()
-        let pt1 = NSBezierPath(rect: NSRect(x: -2*offset, y: 0+offset, width: self.frame.size.width+4*offset, height: self.frame.size.height-2*offset))
-        pt1.lineJoinStyle = NSLineJoinStyle.RoundLineJoinStyle
-        pt1.lineWidth = offset/2
-        pt1.stroke()
+//        self.alphaValue = 1
+//        NSColor(hex: 0xd6ecfa, alpha: 1).setStroke()
+//        let pt1 = NSBezierPath(rect: NSRect(x: -2*offset, y: 0+offset, width: self.frame.size.width+4*offset, height: self.frame.size.height-2*offset))
+//        pt1.lineJoinStyle = NSLineJoinStyle.RoundLineJoinStyle
+//        pt1.lineWidth = offset/2
+//        pt1.stroke()
         
         let levelWidth = CGFloat((selectedLevel?.width)! * 40)
         let levelHeight = CGFloat((selectedLevel?.height)!*40)

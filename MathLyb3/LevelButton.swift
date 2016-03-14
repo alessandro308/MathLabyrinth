@@ -161,7 +161,16 @@ class LevelButton: NSView {
         
         let frame = NSRect(origin: NSMakePoint(((ws?.width)!-width)/2, ((ws?.height)!-height)/2), size: CGSize(width:width, height:height))
         
-        NSApplication.sharedApplication().mainWindow!.setFrame(frame, display: true, animate: true)
+         NSApplication.sharedApplication().mainWindow!.minSize = frame.size
+        
+        if self.window!.styleMask & NSFullScreenWindowMask != NSFullScreenWindowMask {
+        
+            NSApplication.sharedApplication().mainWindow!.setFrame(frame, display: true, animate: true)
+        }
+        else{
+            g.view.setFrameSize(self.window!.frame.size)
+        }
+        
         self.window?.contentViewController = g
         
       

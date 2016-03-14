@@ -12,8 +12,11 @@ class GameViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let bg = GameController(frame: NSRect(origin: CGPoint.zero, size: self.view.frame.size))
-        self.view.addSubview(bg)*/
+        /*if NSApplication.sharedApplication().mainWindow!
+            .styleMask & NSFullScreenWindowMask == NSFullScreenWindowMask {
+            let bg = RandomGameBackground(frame: NSRect(origin: CGPoint.zero, size: self.view.frame.size))
+            self.view = bg
+        }*/
     }
 
     

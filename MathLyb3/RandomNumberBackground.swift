@@ -27,7 +27,8 @@ class RandomNumberBackground: NSView {
         NSTimer.scheduledTimerWithTimeInterval(0.04, target: self, selector: "updateNumbers", userInfo: nil, repeats: true)
         previousFrame = self.frame
         for s in (0...10){
-            chars.append(NSString(string: String(arc4random()) + String(arc4random()) + String(arc4random()) + String(arc4random()) ))
+            let str = String(arc4random())
+            chars.append(NSString(string: str + str + str + str + str + str ))
             strPosition.append(CGFloat(0))
             strVersus.append(CGFloat(-s%2))
             if(strVersus[s]%2 == 0){
