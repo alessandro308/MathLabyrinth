@@ -34,7 +34,7 @@ class MainViewController: NSViewController {
             height: 270))
         
         scr!.becomeFirstResponder()
-        
+        NSApplication.sharedApplication().mainWindow!.makeFirstResponder(scr)
         self.view.addSubview(scr!)
     }
 

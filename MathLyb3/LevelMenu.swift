@@ -10,6 +10,10 @@ import Cocoa
 
 class LevelMenu : NSView{
     var win = false
+    var scr : MySheetView? = nil
+    var levelView : LevelView? = nil
+    
+    override var acceptsFirstResponder : Bool { get {return true}}
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -66,18 +70,33 @@ class LevelMenu : NSView{
         NSApplication.sharedApplication().terminate(self)
     }
     
+    func CloseMenu(){
+        self.removeFromSuperview()
+        if levelView != nil{
+            levelView?.menuIsOpen = false
+        }
+    }
+    
     func SelectLevel(){
         let f = self.frame
-        let scr = LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
+        scr = LevelScrollController(frame: NSRect(x: f.size.width / 6 ,
             y: f.size.height - 270 ,
             width: f.size.width*4 / 6  ,
             height: 270))
         
-        scr.becomeFirstResponder()
+        self.window?.makeFirstResponder(scr)
         
-        self.addSubview(scr)
+        self.addSubview(scr!)
     }
     
+    override func mouseDown(theEvent: NSEvent) {
+        if scr != nil {
+            if scr!.frame.contains(scr!.convertPoint(theEvent.locationInWindow, fromView: nil)){
+                scr!.dismissView()
+                scr = nil
+            }
+        }
+    }
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         NSColor(calibratedWhite: 0.1, alpha: 0.8).setFill()
@@ -98,9 +117,19 @@ class LevelMenu : NSView{
             bz.lineToPoint(NSMakePoint(fontSize.width + (self.frame.width-fontSize.width)/2, (self.frame.height-fontSize.height - 20)))
             bz.stroke()
         }
-        
-        
-        
-        
+    }
+    
+    override func keyDown(theEvent: NSEvent) {
+        if theEvent.keyCode == 53 && !self.win{
+            self.removeFromSuperview()
+            if levelView != nil{
+                levelView?.menuIsOpen = false
+                NSApplication.sharedApplication().mainWindow!.makeFirstResponder(levelView)
+            }
+            
+        }
+        else if theEvent.keyCode == 53 && win{
+            Exit()
+        }
     }
 }

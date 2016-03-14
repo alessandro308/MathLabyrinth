@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Foundation
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -24,7 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let fileManager = NSFileManager.defaultManager()
             let home = NSHomeDirectory()
             let dataPath = home.stringByAppendingString("/MathLabyrinth")
-            let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(dataPath)!
+            let tmp = fileManager.enumeratorAtPath(dataPath)
+        if tmp != nil{
+            let enumerator:NSDirectoryEnumerator = tmp!
             while let element = enumerator.nextObject() as? String {// checks the extension
                 if element.hasSuffix("level"){
                     totalLevel++;
@@ -34,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     levelsFile.setValue(element, forKey: a[0] as! String)
                 }
             }
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

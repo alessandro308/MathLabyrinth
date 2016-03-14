@@ -19,9 +19,9 @@ class ScrollLevel: NSScrollView {
         super.init(frame: frameRect)
         levelContainer = LevelView(frame: NSRect(origin: CGPoint.zero /*NSMakePoint(-self.frame.origin.x, -self.frame.origin.y)*/, size: self.frame.size))
         levelContainer?.scrollView = self
-        
+
         self.documentView = levelContainer
-        
+        NSApplication.sharedApplication().mainWindow!.makeFirstResponder(levelContainer)
         if self.frame.width > CGFloat((selectedLevel?.width)!*40) || self.frame.height > CGFloat((selectedLevel?.height)!*40){
             scrollEnable = false
         }
@@ -34,6 +34,12 @@ class ScrollLevel: NSScrollView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+       NSApplication.sharedApplication().mainWindow!.makeFirstResponder(levelContainer)
+        return true
     }
     
     /*override func scrollWheel(theEvent: NSEvent) {

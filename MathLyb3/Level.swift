@@ -536,6 +536,8 @@ class Level {
         anim.repeatCount = 2
         anim.duration = 7/100
         
+        NSSound(named: "vib")?.play()
+        
         self.view?.layer!.addAnimation( anim, forKey:nil )
         
     }
@@ -554,6 +556,8 @@ class Level {
         anim.autoreverses = true
         anim.repeatCount = 2
         anim.duration = 7/100
+        
+        NSSound(named: "tennis")?.copy().play()
         
         self.view?.layer!.addAnimation( anim, forKey:nil )
     }
@@ -587,25 +591,44 @@ class Level {
                 if( Parser.evalBool(myValue, x: (map[newCell.x][newCell.y]).value) ){
                     switch from{
                         case .N:
-                            map[newCell.x][newCell.y-1] = map[youPosition.x][youPosition.y]
-                            map[youPosition.x][youPosition.y] = Cell()
-                            youPosition = (newCell.x, newCell.y-1)
+                            if newCell.y-1 >= 0{
+                                if map[newCell.x][newCell.y-1].type == .exit{
+                                    levelEnded = true
+                                }
+                                map[newCell.x][newCell.y-1] = map[youPosition.x][youPosition.y]
+                                map[youPosition.x][youPosition.y] = Cell()
+                                youPosition = (newCell.x, newCell.y-1)
+                            }
                         case .S:
-                            map[newCell.x][newCell.y+1] = map[youPosition.x][youPosition.y]
-                            map[youPosition.x][youPosition.y] = Cell()
-                            youPosition = (newCell.x, newCell.y+1)
+                            if newCell.y+1 < self.height {
+                                if map[newCell.x][newCell.y+1].type == .exit{
+                                    levelEnded = true
+                                }
+                                map[newCell.x][newCell.y+1] = map[youPosition.x][youPosition.y]
+                                map[youPosition.x][youPosition.y] = Cell()
+                                youPosition = (newCell.x, newCell.y+1)
+                            }
                         case .W:
-                            map[newCell.x+1][newCell.y] = map[youPosition.x][youPosition.y]
-                            map[youPosition.x][youPosition.y] = Cell()
-                            youPosition = (newCell.x+1, newCell.y)
+                            if newCell.x+1 < self.width{
+                                if map[newCell.x+1][newCell.y].type == .exit{
+                                    levelEnded = true
+                                }
+                                map[newCell.x+1][newCell.y] = map[youPosition.x][youPosition.y]
+                                map[youPosition.x][youPosition.y] = Cell()
+                                youPosition = (newCell.x+1, newCell.y)
+                            }
                         case .E:
-                            map[newCell.x-1][newCell.y] = map[youPosition.x][youPosition.y]
-                            map[youPosition.x][youPosition.y] = Cell()
-                            youPosition = (newCell.x-1, newCell.y)
+                            if newCell.x-1 >= 0{
+                                if map[newCell.x-1][newCell.y].type == .exit{
+                                    levelEnded = true
+                                }
+                                map[newCell.x-1][newCell.y] = map[youPosition.x][youPosition.y]
+                                map[youPosition.x][youPosition.y] = Cell()
+                                youPosition = (newCell.x-1, newCell.y)
+                            }
                         default:
                             break
                     }
-                    
                 }
                 else{
                     shake(from)

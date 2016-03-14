@@ -154,18 +154,17 @@ class LevelButton: NSView {
         selectedLevel = Level(str: x!)
         
         
-        
+        let g = GameViewController()
         let ws = NSScreen.mainScreen()?.frame.size
-        let width : CGFloat = (ws?.width)!-100
-        let height : CGFloat = (ws?.height)!-100
+        let width : CGFloat = g.view.frame.width
+        let height : CGFloat = g.view.frame.height
         
         let frame = NSRect(origin: NSMakePoint(((ws?.width)!-width)/2, ((ws?.height)!-height)/2), size: CGSize(width:width, height:height))
         
-        let g = GameViewController()
-        
+        NSApplication.sharedApplication().mainWindow!.setFrame(frame, display: true, animate: true)
         self.window?.contentViewController = g
-        self.window?.setFrame(frame, display: true, animate: true)
-        self.window?.makeFirstResponder(g)
+        
+      
         //self.window?.styleMask = (self.window?.styleMask)! & NSResizableWindowMask
     }
 }

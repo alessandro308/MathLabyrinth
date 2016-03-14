@@ -10,6 +10,8 @@ import Cocoa
 
 class LevelView: NSView {
     
+    var menuIsOpen = false
+    
     override var acceptsFirstResponder : Bool {get { return true } }
     var scrollView : NSScrollView? = nil
     
@@ -22,6 +24,7 @@ class LevelView: NSView {
             self.frame.size.height = CGFloat((selectedLevel?.height)!*40)
         }
         selectedLevel?.view = self
+        self.window?.makeFirstResponder(self)
     }
     
     required init?(coder: NSCoder) {
@@ -31,11 +34,11 @@ class LevelView: NSView {
     override func drawRect(dirtyRect: NSRect) {
         let offset = CGFloat(10)
         NSColor(calibratedWhite: 0, alpha: 0.4).setFill()
-        let pt = NSBezierPath(rect: NSRect(x: 0+offset, y: 0+offset, width: self.frame.size.width-2*offset, height: self.frame.size.height-2*offset))
+        let pt = NSBezierPath(rect: NSRect(x: 0, y: 0+offset, width: self.frame.size.width, height: self.frame.size.height-2*offset))
         pt.fill()
         self.alphaValue = 1
         NSColor(hex: 0xd6ecfa, alpha: 1).setStroke()
-        let pt1 = NSBezierPath(rect: NSRect(x: 0+offset, y: 0+offset, width: self.frame.size.width-2*offset, height: self.frame.size.height-2*offset))
+        let pt1 = NSBezierPath(rect: NSRect(x: -2*offset, y: 0+offset, width: self.frame.size.width+4*offset, height: self.frame.size.height-2*offset))
         pt1.lineJoinStyle = NSLineJoinStyle.RoundLineJoinStyle
         pt1.lineWidth = offset/2
         pt1.stroke()
@@ -81,8 +84,11 @@ class LevelView: NSView {
             selectedLevel?.restart()
         case 53:
             // Show menù
-            let main = MainViewController()
-            self.window?.contentViewController = main
+            let levelMenu = LevelMenu(frame: self.frame)
+            self.addSubview(levelMenu)
+            levelMenu.levelView = self
+            self.window?.makeFirstResponder(levelMenu)
+            menuIsOpen = true
             return;
         default:
             Swift.print("Premuto tasto ",char)
@@ -99,7 +105,11 @@ class LevelView: NSView {
     func levelEndedAnimation(){
         let levelMenu = LevelMenu(frame: self.frame)
         levelMenu.win = true
+        levelMenu.levelView = self
         self.addSubview(levelMenu)
+        self.window?.makeFirstResponder(levelMenu)
+        menuIsOpen = true
+        NSSound(named: "win")?.play()
     }
     
 }

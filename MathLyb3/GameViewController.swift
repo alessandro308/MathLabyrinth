@@ -12,7 +12,8 @@ class GameViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.window?.styleMask = ( NSBorderlessWindowMask | NSResizableWindowMask & NSFullScreenWindowMask)
+        /*let bg = GameController(frame: NSRect(origin: CGPoint.zero, size: self.view.frame.size))
+        self.view.addSubview(bg)*/
     }
 
     
