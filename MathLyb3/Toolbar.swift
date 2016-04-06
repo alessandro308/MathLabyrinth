@@ -62,7 +62,7 @@ class Toolbar: NSView {
         super.drawRect(dirtyRect)
         
         //Background
-        NSColor.darkGrayColor().setFill()
+        NSColor(calibratedWhite: 0.8, alpha: 0.8).setFill()
         NSBezierPath(rect: NSRect(origin: CGPoint.zero, size: self.frame.size)).fill()
         
         //Evidenzia tools selezionato

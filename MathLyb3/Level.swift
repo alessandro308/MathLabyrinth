@@ -362,77 +362,62 @@ class Level {
         
         for(var i = 0; i < width; i++){
             for(var j = height-1; j>=0; j--){
+                let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40+1, CGFloat(j)*40+1), size: CGSize(width: 38, height: 38))
+                let bgfr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 41, height: 41))
                 switch map[i][j].type{
                 case tools.conditional:
                     let str = NSString(string: String(map[i][j].value))
                     let fontsize = str.sizeWithAttributes(attrs)
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
                     let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    colors[2].setFill()
+                    NSBezierPath(rect: bgfr).fill()
                     NSColor(red: 1, green: 0, blue: 0, alpha: 0.9).setFill()
-                    NSBezierPath(rect: fr).fill()
+                    let pth = NSBezierPath(roundedRect: fr, xRadius: 5, yRadius: 5)
+                    pth.fill()
                     str.drawInRect(strfr, withAttributes: attrs)
                 case tools.exit:
                     let str = "Exit"
                     let fontsize = str.sizeWithAttributes(attrs)
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
                     let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    colors[2].setFill()
+                    NSBezierPath(rect: bgfr).fill()
                     NSColor(hex: 0xcccc00, alpha: 0.9).setFill()
-                    NSBezierPath(rect: fr).fill()
+                    NSBezierPath(roundedRect: fr, xRadius: 5, yRadius: 5).fill()
                     str.drawInRect(strfr, withAttributes: attrs)
                 case tools.startPosition:
                     let str = NSString(string: String(map[i][j].value))
                     let fontsize = str.sizeWithAttributes(attrs)
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
                     let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    colors[2].setFill()
+                    NSBezierPath(rect: bgfr).fill()
                     NSColor(hex: 0xFFA500, alpha: 0.9).setFill()
-                    NSBezierPath(rect: fr).fill()
+                    NSBezierPath(roundedRect: fr, xRadius: 5, yRadius: 5).fill()
                     str.drawInRect(strfr, withAttributes: attrs)
                     
                 case tools.oneShot:
                     let str = NSString(string: String(map[i][j].value))
                     let fontsize = str.sizeWithAttributes(attrs)
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
                     let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    colors[2].setFill()
+                    NSBezierPath(rect: bgfr).fill()
                     NSColor(red: 0, green: 0, blue: 1, alpha: 0.9).setFill()
-                    NSBezierPath(rect: fr).fill()
+                    NSBezierPath(roundedRect: fr, xRadius: 5, yRadius: 5).fill()
                     str.drawInRect(strfr, withAttributes: attrs)
                 case tools.simple:
                     let str = NSString(string: String(map[i][j].value))
                     let fontsize = str.sizeWithAttributes(attrs)
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
                     let strfr = NSRect(origin: NSMakePoint((CGFloat(i)*40)+20-fontsize.width/2, CGFloat(j)*40-fontsize.height/2), size: CGSize(width: 40, height: 40))
+                    colors[2].setFill()
+                    NSBezierPath(rect: bgfr).fill()
                     NSColor(hex: 0x2C6700, alpha: 0.9).setFill()
-                    NSBezierPath(rect: fr).fill()
+                    NSBezierPath(roundedRect: fr, xRadius: 19, yRadius: 19).fill()
                     str.drawInRect(strfr, withAttributes: attrs)
                 case tools.block:
                     break
                 default:
                     NSColor.whiteColor().setStroke()
-                    let fr = NSRect(origin: NSMakePoint(CGFloat(i)*40, CGFloat(j)*40), size: CGSize(width: 40, height: 40))
-                    /*if i == 0 || map[i-1][j].type == .block {
-                        let pt = NSBezierPath()
-                        pt.moveToPoint(fr.origin)
-                        pt.lineToPoint(NSPoint(x: fr.origin.x, y: fr.origin.y+40))
-                        pt.lineWidth = 2
-                        pt.stroke()
-                    }
-                    if i == width-1 || map[i+1][j].type == .block{
-                        let pt = NSBezierPath()
-                        pt.moveToPoint(NSMakePoint(fr.origin.x+40, fr.origin.y))
-                        pt.lineToPoint(NSPoint(x: fr.origin.x+40, y: fr.origin.y+40))
-                        pt.lineWidth = 2
-                        pt.stroke()
-                    }
-                    if j == 0 || map[i][j-1].type == .block{
-                        let pt = NSBezierPath()
-                        pt.moveToPoint(fr.origin)
-                        pt.lineToPoint(NSPoint(x: fr.origin.x, y: fr.origin.y+40))
-                        pt.lineWidth = 2
-                        pt.stroke()
-                    }*/
-                    
                     colors[2].setFill()
-                    NSBezierPath(rect: fr).fill()
+                    NSBezierPath(rect: bgfr).fill()
                 }
             }
         }

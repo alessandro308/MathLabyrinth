@@ -38,6 +38,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+        NSSound(named: "vib")
+        NSSound(named: "tennis")
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

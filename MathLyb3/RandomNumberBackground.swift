@@ -28,12 +28,9 @@ class RandomNumberBackground: NSView {
         previousFrame = self.frame
         for s in (0...10){
             let str = String(arc4random())
-            chars.append(NSString(string: str + str + str + str + str + str ))
-            strPosition.append(CGFloat(0))
+            chars.append(NSString(string: str + str + str + str + str + str + str + str + str + str))
+            strPosition.append(-chars[s].sizeWithAttributes(attrs).width/4)
             strVersus.append(CGFloat(-s%2))
-            if(strVersus[s]%2 == 0){
-                strPosition[s] = -chars[s].sizeWithAttributes(attrs).width+self.frame.size.width + 70
-            }
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onResize:", name: NSWindowDidResizeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onResize:", name: NSWindowDidEnterFullScreenNotification, object: nil)
@@ -47,14 +44,13 @@ class RandomNumberBackground: NSView {
     override func awakeFromNib() {
         NSTimer.scheduledTimerWithTimeInterval(0.04, target: self, selector: "updateNumbers", userInfo: nil, repeats: true)
         previousFrame = self.frame
-        for s in (0...5){
-            chars.append(NSString(string: String(arc4random()) + String(arc4random()) + String(arc4random()) + String(arc4random()) ))
-            strPosition.append(CGFloat(0))
+        for s in (0...10){
+            let str = String(arc4random())
+            chars.append(NSString(string: str + str + str + str + str + str + str + str + str + str))
+            strPosition.append(-chars[s].sizeWithAttributes(attrs).width/4)
             strVersus.append(CGFloat(-s%2))
-            if(strVersus[s]%2 == 0){
-                strPosition[s] = -chars[s].sizeWithAttributes(attrs).width+self.frame.size.width + 70
-            }
         }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onResize:", name: NSWindowDidResizeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onResize:", name: NSWindowDidEnterFullScreenNotification, object: nil)
     }

@@ -15,6 +15,7 @@ class TextViewEditCell: NSTextField {
     var eventMonitor1 : AnyObject? = nil
     var eventMonitor2 : AnyObject? = nil
     override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
         return true
     }
     
@@ -51,7 +52,8 @@ class TextViewEditCell: NSTextField {
                 self.save()
             }
         })
-
+        NSApplication.sharedApplication().mainWindow!.performSelector("makeFirstResponder:", withObject: self, afterDelay: 0.0)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +95,7 @@ class TextViewEditCell: NSTextField {
                 level!.editCell(Int(cella!.x), y: Int(cella!.y), value: (self.stringValue))
             }
         }
+        self.superview?.needsDisplay = true
         self.removeFromSuperview()
         if self.eventMonitor1 != nil{
             NSEvent.removeMonitor(self.eventMonitor1!)
@@ -103,6 +106,7 @@ class TextViewEditCell: NSTextField {
             self.eventMonitor2 = nil
         }
         }
+        
     }
     
 }

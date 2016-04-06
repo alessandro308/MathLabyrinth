@@ -63,6 +63,8 @@ class LevelMenu : NSView{
     func BackToMenu(){
         NSApplication.sharedApplication().mainWindow!.minSize = NSSize(width: 570, height: 388)
         let main = MainViewController()
+        main.view.setFrameOrigin((self.window?.frame.origin)!)
+        main.view.setFrameSize((self.window?.frame.size)!)
         self.window?.contentViewController = main
         return;
     }

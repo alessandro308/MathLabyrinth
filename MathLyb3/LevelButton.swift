@@ -164,15 +164,14 @@ class LevelButton: NSView {
          NSApplication.sharedApplication().mainWindow!.minSize = frame.size
         
         if self.window!.styleMask & NSFullScreenWindowMask != NSFullScreenWindowMask {
-        
             NSApplication.sharedApplication().mainWindow!.setFrame(frame, display: true, animate: true)
         }
         else{
             g.view.setFrameSize(self.window!.frame.size)
+            g.view.setFrameOrigin(self.window!.frame.origin)
         }
         
         self.window?.contentViewController = g
-        
       
         //self.window?.styleMask = (self.window?.styleMask)! & NSResizableWindowMask
     }

@@ -275,6 +275,7 @@ class CustomLevel: NSView {
         window!.movableByWindowBackground = true
         mouseOver = false
         NSCursor.unhide()
+        self.needsDisplay = true
     }
     
     override func mouseDown(theEvent: NSEvent){
