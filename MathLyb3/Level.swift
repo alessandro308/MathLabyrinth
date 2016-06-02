@@ -454,7 +454,7 @@ class Level {
 
             var str = self.name!
             str += "\n"+String(self.topsx.x)+" "+String(self.topsx.y) + " "+String(self.bottomdx.x)+" "+String(self.bottomdx.y)+"\n"
-            for(var j = self.topsx.y; j>=self.bottomdx.y; j--){
+            for(var j = self.topsx.y; j>=self.bottomdx.y; j=j-1){
                 for(var i = self.topsx.x; i<=self.bottomdx.x; i++){
                     switch self.map[i][j].type{
                     case .null:
@@ -496,7 +496,9 @@ class Level {
                 Swift.print(e)
             }
             
+            levels.removeObject(self.name!)
             levels.addObject(self.name!)
+        
         }
             return true;
         }

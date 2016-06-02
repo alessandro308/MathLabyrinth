@@ -371,7 +371,7 @@ class CustomLevel: NSView {
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
-                tv.stringValue = ">0"
+                tv.stringValue = "=1"
                 tv.editable = true
                 self.addSubview(tv)
                 tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
@@ -385,6 +385,7 @@ class CustomLevel: NSView {
             
             case tools.clear:
                 level.addCell(tools.clear, x: x, y: y)
+            
             case tools.oneShot:
                 level.addCell(tools.oneShot, x: x, y: y)
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
@@ -402,7 +403,7 @@ class CustomLevel: NSView {
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
-                tv.stringValue = "+0"
+                tv.stringValue = "*2"
                 tv.editable = true
                 self.addSubview(tv)
                 tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
@@ -414,15 +415,17 @@ class CustomLevel: NSView {
                 let tvFrame = NSRect(x: mousePosition.x, y: mousePosition.y, width: 40, height: 20)
                 let tv = TextViewEditCell(frame: tvFrame)
                 tv.selectable = true
-                tv.stringValue = "3"
+                tv.stringValue = "5"
                 tv.editable = true
                 self.addSubview(tv)
                 tv.cella = NSMakePoint(pt2level.x/40, pt2level.y/40)
                 tv.level = self.level
+            
             default:
                 break
         }
         }
+        self.needsDisplay = true
     }
 
 }

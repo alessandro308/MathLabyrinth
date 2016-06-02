@@ -55,7 +55,7 @@ class CreateLevelController: MySheetView {
         let trk = NSTrackingArea(rect: canvasFrame, options: options, owner: canvas, userInfo: nil)
         canvas?.addTrackingArea(trk)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onResize:", name: NSWindowDidResizeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreateLevelController.onResize(_:)), name: NSWindowDidResizeNotification, object: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -81,7 +81,7 @@ class CreateLevelController: MySheetView {
     
     override func dismissView() {
         super.dismissView()
-        totalLevel++
+        totalLevel+=1
     }
     
     override func keyDown(theEvent: NSEvent) {
